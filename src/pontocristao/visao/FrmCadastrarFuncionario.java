@@ -1,12 +1,8 @@
 package pontocristao.visao;
 
 import java.awt.*;
-import java.text.ParseException;
 import java.util.Arrays;
-import java.util.Date;
 import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
-import javax.swing.text.MaskFormatter;
 import pontocristao.controle.ControleFuncionario;
 import pontocristao.modelo.Funcionario;
 import pontocristao.modelo.Sexo;
