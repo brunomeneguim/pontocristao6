@@ -23,13 +23,13 @@ public class ControleTipoFilme extends ControleBase {
         setModelo(new TipoFilme());
     }
 
-    public List<TipoFilme> RetornarTiposProduto() {
+    public List<TipoFilme> RetornarTiposFilme() {
         String sql = "SELECT * FROM TipoFilme WHERE excluido = false";
         Query q = this.getSessao().createSQLQuery(sql).addEntity(TipoFilme.class);
         return (List<TipoFilme>) q.list();
     }
 
-    public List<TipoFilme> RetornarTiposProduto(String[] camposPesquisa, String textoPesquisa) {
+    public List<TipoFilme> RetornarTiposFilme(String[] camposPesquisa, String textoPesquisa) {
         String sql = "SELECT * FROM TipoFilme";
 
         if (camposPesquisa != null && textoPesquisa != null && camposPesquisa.length > 0 && textoPesquisa.length() > 0) {

@@ -13,21 +13,21 @@ import pontocristao.util.Utilidades;
  *
  * @author Marcondes
  */
-public class FrmTipoFilme extends javax.swing.JDialog {
+public class FrmTipoContaPagar extends javax.swing.JDialog {
 
     private DefaultTableModel modeloTabela;
-    private ControleTipoFilme controle = new ControleTipoFilme();
+    private ControleTipoContaPagar controle = new ControleTipoContaPagar();
     private static Frame frame;
-    private java.util.List<TipoFilme> lista;
+    private java.util.List<TipoContaPagar> lista;
 
-    public static FrmTipoFilme Mostrar(java.awt.Frame parent) {
+    public static FrmTipoContaPagar Mostrar(java.awt.Frame parent) {
         frame = parent;
-        FrmTipoFilme frm = new FrmTipoFilme(parent, true);
+        FrmTipoContaPagar frm = new FrmTipoContaPagar(parent, true);
         frm.setVisible(true);
         return frm;
     }
 
-    public FrmTipoFilme(java.awt.Frame parent, boolean modal) {
+    public FrmTipoContaPagar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         AjustarTabela();
@@ -70,31 +70,31 @@ public class FrmTipoFilme extends javax.swing.JDialog {
         });
     }
 
-    private void AtualizarTabela(java.util.List<TipoFilme> tiposFilme) {
+    private void AtualizarTabela(java.util.List<TipoContaPagar> tiposContaPagar) {
         while (modeloTabela.getRowCount() > 0) {
             modeloTabela.removeRow(0);
         }
 
-        lista = tiposFilme;
+        lista = tiposContaPagar;
 
-        for (TipoFilme tipoFilme : tiposFilme) {
-            AdicionarLinha(tipoFilme);
+        for (TipoContaPagar tipoContaPagar : tiposContaPagar) {
+            AdicionarLinha(tipoContaPagar);
         }
     }
 
-    private void AdicionarLinha(TipoFilme tipoFilme) {
-        modeloTabela.addRow(RetornarNovaLinha(tipoFilme));
+    private void AdicionarLinha(TipoContaPagar tipoContaPagar) {
+        modeloTabela.addRow(RetornarNovaLinha(tipoContaPagar));
     }
 
-    private Object[] RetornarNovaLinha(TipoFilme tipoFilme) {
+    private Object[] RetornarNovaLinha(TipoContaPagar tipoContaPagar) {
         return new Object[]{
-            tipoFilme.getDescricao()
+            tipoContaPagar.getDescricao()
         };
     }
 
     public void Listar() {
         try {
-            AtualizarTabela(controle.RetornarTiposFilme());
+            AtualizarTabela(controle.RetornarTiposContaPagar());
         } catch (Exception e) {
             Utilidades.MostrarMensagemErro(e);
         }
@@ -103,7 +103,7 @@ public class FrmTipoFilme extends javax.swing.JDialog {
     public void Listar(String pesquisa) {
         if (pesquisa != null && pesquisa.length() > 0) {
             String[] camposPesquisa = new String[]{"descricao"};
-            AtualizarTabela(controle.RetornarTiposFilme(camposPesquisa, pesquisa));
+            AtualizarTabela(controle.RetornarTiposContaPagar(camposPesquisa, pesquisa));
         } else {
             Listar();
         }
@@ -128,6 +128,7 @@ public class FrmTipoFilme extends javax.swing.JDialog {
         jTableLista = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Tipo de Conta a Pagar");
 
         BtnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pontocristao/icones/BtnEditar.png"))); // NOI18N
         BtnEditar.setText("Editar");
@@ -229,16 +230,16 @@ public class FrmTipoFilme extends javax.swing.JDialog {
     private void BtnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditarActionPerformed
         if (lista != null) {
             int linhaSelecionada = jTableLista.getSelectedRow();
-            TipoFilme tipoFilme = lista.get(linhaSelecionada);
-            FrmCadastrarTipoFilme frm = FrmCadastrarTipoFilme.Mostrar(frame, tipoFilme.getId());
+            TipoContaPagar tipoContaPagar = lista.get(linhaSelecionada);
+            FrmCadastrarTipoContaPagar frm = FrmCadastrarTipoContaPagar.Mostrar(frame, tipoContaPagar.getId());
 
-            tipoFilme = frm.getTipoFilme();
+            tipoContaPagar = frm.getTipoContaPagar();
 
             if (frm.getModeloAtualizado()) {
                 modeloTabela.removeRow(linhaSelecionada);
-                modeloTabela.insertRow(linhaSelecionada, RetornarNovaLinha(tipoFilme));
+                modeloTabela.insertRow(linhaSelecionada, RetornarNovaLinha(tipoContaPagar));
 
-                controle = new ControleTipoFilme();
+                controle = new ControleTipoContaPagar();
             }
         }
     }//GEN-LAST:event_BtnEditarActionPerformed
@@ -246,7 +247,7 @@ public class FrmTipoFilme extends javax.swing.JDialog {
     private void BtnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSairActionPerformed
         Object[] botoes = {"Sim", "Não"};
         int resposta = JOptionPane.showOptionDialog(null,
-            "Deseja sair da lista de tipos de filme?",
+            "Deseja sair da lista de tipos de conta a pagar?",
             "Confirmação",
             JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null,
             botoes, botoes[0]);
@@ -258,18 +259,18 @@ public class FrmTipoFilme extends javax.swing.JDialog {
     private void BtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnExcluirActionPerformed
         if (lista != null) {
 
-            Boolean podeExcluir = Utilidades.MostrarMensagemPergunta("Confirmação", "Tem certeza que deseja excluir o tipo de filme?", false);
+            Boolean podeExcluir = Utilidades.MostrarMensagemPergunta("Confirmação", "Tem certeza que deseja excluir o tipo de conta a pagar?", false);
 
             if (podeExcluir) {
                 int linhaSelecionada = jTableLista.getSelectedRow();
-                TipoFilme tipoFilme = lista.get(linhaSelecionada);
+                TipoContaPagar tipoContaPagar = lista.get(linhaSelecionada);
 
                 try {
-                    controle.Excluir(tipoFilme.getId());
+                    controle.Excluir(tipoContaPagar.getId());
                     modeloTabela.removeRow(linhaSelecionada);
-                    lista.remove(tipoFilme);
+                    lista.remove(tipoContaPagar);
 
-                    controle = new ControleTipoFilme();
+                    controle = new ControleTipoContaPagar();
                 } catch (Exception e) {
                     Utilidades.MostrarMensagemErro(e);
                 }
@@ -282,15 +283,15 @@ public class FrmTipoFilme extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnPesquisarActionPerformed
 
     private void BtnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNovoActionPerformed
-        FrmCadastrarTipoFilme frm = FrmCadastrarTipoFilme.Mostrar(frame, 0);
+        FrmCadastrarTipoContaPagar frm = FrmCadastrarTipoContaPagar.Mostrar(frame, 0);
 
         if (frm.getModeloAtualizado()) {
-            TipoFilme tipoFilme = frm.getTipoFilme();
-            AdicionarLinha(tipoFilme);
-            lista.add(tipoFilme);
+            TipoContaPagar tipoContaPagar = frm.getTipoContaPagar();
+            AdicionarLinha(tipoContaPagar);
+            lista.add(tipoContaPagar);
         }
 
-        controle = new ControleTipoFilme();
+        controle = new ControleTipoContaPagar();
     }//GEN-LAST:event_BtnNovoActionPerformed
 
     /**
@@ -310,20 +311,21 @@ public class FrmTipoFilme extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmTipoFilme.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmTipoContaPagar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmTipoFilme.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmTipoContaPagar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmTipoFilme.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmTipoContaPagar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmTipoFilme.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmTipoContaPagar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FrmTipoFilme dialog = new FrmTipoFilme(new javax.swing.JFrame(), true);
+                FrmTipoContaPagar dialog = new FrmTipoContaPagar(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
