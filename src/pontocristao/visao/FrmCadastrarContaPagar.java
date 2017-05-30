@@ -72,15 +72,18 @@ public class FrmCadastrarContaPagar extends javax.swing.JDialog {
     }
 
     private void AtualizarCampos() {
-
+        //Fazer
     }
 
     private void AtualizarModelo() {
+        //Fazer
     }
 
     public Boolean ValidaCampos() {
         Boolean retorno = true;
 
+        //Fazer
+        
         return retorno;
     }
 
