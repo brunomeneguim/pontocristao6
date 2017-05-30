@@ -105,10 +105,49 @@ public class ControleContaPagar extends ControleBase {
             return erro;
         }
     }
+    
+    public Exception PagarConta(long id) {
+        String sql = "SELECT * FROM ContaPagar WHERE id = " + id;
+        Exception erro = null;
+
+        try {
+            Session s = getSessao();
+            Query q = s.createSQLQuery(sql).addEntity(ContaPagar.class);
+            List resultados = q.list();
+
+            if (resultados.size() == 1) {
+                ContaPagar contaPagar = (ContaPagar) resultados.get(0);
+                contaPagar.setPago(true);
+                
+                MovimentacaoCaixaContaPagar movimentacao = new MovimentacaoCaixaContaPagar();
+                movimentacao.setContaPagar(contaPagar);
+                movimentacao.setData(new Date());
+                movimentacao.setValor(contaPagar.getValor());
+                movimentacao.setFuncionario(ControleSistema.getFuncionarioLogado(s));
+                
+                ControleCaixa controleCaixa = new ControleCaixa(s);
+                controleCaixa.AdicionarMovimentacao(movimentacao);
+
+                Transaction transacao = s.getTransaction();
+
+                transacao.begin();
+                s.save(contaPagar);
+                transacao.commit();
+
+            } else {
+                throw new Exception("Não foi possível encontrar a conta a pagar com o id " + id);
+            }
+        } catch (Exception e) {
+            erro = e;
+        } finally {
+            return erro;
+        }
+    }
 
     public Exception Salvar() {
         if (getContaPagar().getId() <= 0) {
             getContaPagar().setData(new Date());
+            getContaPagar().setPago(false);
         }
         return Salvar(getModelo());
     }

@@ -35,9 +35,9 @@
                       <Component id="BtnEditar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="BtnExcluir" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="BtnPagamento" min="-2" pref="113" max="-2" attributes="0"/>
-                      <EmptySpace pref="144" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="BtnPagamento" min="-2" pref="116" max="-2" attributes="0"/>
+                      <EmptySpace pref="137" max="32767" attributes="0"/>
                       <Component id="txtPesquisar" min="-2" pref="200" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="BtnPesquisar" min="-2" max="-2" attributes="0"/>
@@ -156,7 +156,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnSair1ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="BtnPagamento">
+    <Component class="javax.swing.JButton" name="BtnPagamento">
       <Properties>
         <Property name="text" type="java.lang.String" value="Pagar"/>
       </Properties>

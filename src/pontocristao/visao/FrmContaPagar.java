@@ -62,15 +62,14 @@ public class FrmContaPagar extends javax.swing.JDialog {
                     if (jTableLista.getSelectedRow() >= 0) {
                         BtnEditar.setEnabled(true);
                         BtnExcluir.setEnabled(true);
-                        
+
                         int linhaSelecionada = jTableLista.getSelectedRow();
                         ContaPagar contaPagar = lista.get(linhaSelecionada);
-                        
-                        if(!contaPagar.getPago())
-                        {
+
+                        if (!contaPagar.getPago()) {
                             BtnPagamento.setEnabled(true);
                         }
-                        
+
                     } else {
                         BtnEditar.setEnabled(false);
                         BtnExcluir.setEnabled(false);
@@ -141,7 +140,7 @@ public class FrmContaPagar extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableLista = new javax.swing.JTable();
         BtnSair1 = new javax.swing.JButton();
-        BtnPagamento = new javax.swing.JToggleButton();
+        BtnPagamento = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Conta a Pagar");
@@ -222,9 +221,9 @@ public class FrmContaPagar extends javax.swing.JDialog {
                         .addComponent(BtnEditar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BtnExcluir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BtnPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BtnPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
                         .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BtnPesquisar))
@@ -257,7 +256,7 @@ public class FrmContaPagar extends javax.swing.JDialog {
 
     private void BtnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNovoActionPerformed
         FrmCadastrarContaPagar frm = FrmCadastrarContaPagar.Mostrar(frame, 0);
-        
+
         if (frm.getModeloAtualizado()) {
             ContaPagar contaPagar = frm.getContaPagar();
             AdicionarLinha(contaPagar);
@@ -323,7 +322,27 @@ public class FrmContaPagar extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnPesquisarActionPerformed
 
     private void BtnPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPagamentoActionPerformed
-        // Fazer o pagamento da conta
+        if (lista != null) {
+            int linhaSelecionada = jTableLista.getSelectedRow();
+            ContaPagar contaPagar = lista.get(linhaSelecionada);
+
+            Boolean pagar = Utilidades.MostrarMensagemPergunta("Confirmar pagamento de conta", "Tem certeza que deseja confirmar o pagamento da conta com o valor de R$ " + contaPagar.getValor() + "?", false);
+
+            if (pagar) {
+                try {
+                    contaPagar.setPago(true);
+
+                    controle.PagarConta(contaPagar.getId());
+                    modeloTabela.removeRow(linhaSelecionada);
+                    modeloTabela.insertRow(linhaSelecionada, RetornarNovaLinha(contaPagar));
+                    
+                } catch (Exception e) {
+                    Utilidades.MostrarMensagemErro(e);
+                }
+
+            }
+        }
+
     }//GEN-LAST:event_BtnPagamentoActionPerformed
 
     /**
@@ -379,7 +398,7 @@ public class FrmContaPagar extends javax.swing.JDialog {
     private javax.swing.JButton BtnEditar;
     private javax.swing.JButton BtnExcluir;
     private javax.swing.JButton BtnNovo;
-    private javax.swing.JToggleButton BtnPagamento;
+    private javax.swing.JButton BtnPagamento;
     private javax.swing.JButton BtnPesquisar;
     private javax.swing.JButton BtnSair1;
     private javax.swing.JScrollPane jScrollPane1;

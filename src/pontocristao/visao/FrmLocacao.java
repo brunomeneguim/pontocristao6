@@ -141,6 +141,7 @@ public class FrmLocacao extends javax.swing.JDialog {
         jTableLista = new javax.swing.JTable();
         BtnSair1 = new javax.swing.JButton();
         BtnPagamento = new javax.swing.JButton();
+        BtnDevolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Locação");
@@ -208,6 +209,13 @@ public class FrmLocacao extends javax.swing.JDialog {
             }
         });
 
+        BtnDevolver.setText("Devolver");
+        BtnDevolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDevolverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -224,7 +232,9 @@ public class FrmLocacao extends javax.swing.JDialog {
                         .addComponent(BtnExcluir)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BtnPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BtnDevolver, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                         .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BtnPesquisar))
@@ -244,7 +254,8 @@ public class FrmLocacao extends javax.swing.JDialog {
                         .addComponent(BtnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(BtnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(BtnPagamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(BtnPagamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BtnDevolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
@@ -339,6 +350,30 @@ public class FrmLocacao extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_BtnPagamentoActionPerformed
 
+    private void BtnDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDevolverActionPerformed
+        if (lista != null) {
+            int linhaSelecionada = jTableLista.getSelectedRow();
+            Locacao locacao = lista.get(linhaSelecionada);
+
+            Boolean devolver = Utilidades.MostrarMensagemPergunta("Confirmar devolução da locação", "Tem certeza que deseja confirmar a devolução da locação?", false);
+
+            if (devolver) {
+                try {
+                    locacao.setDevolvido(true);
+
+                    //controle.DevolverLocacao(locacao.getId());
+                    
+                    modeloTabela.removeRow(linhaSelecionada);
+                    modeloTabela.insertRow(linhaSelecionada, RetornarNovaLinha(locacao));
+                    
+                } catch (Exception e) {
+                    Utilidades.MostrarMensagemErro(e);
+                }
+
+            }
+        }
+    }//GEN-LAST:event_BtnDevolverActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -389,6 +424,7 @@ public class FrmLocacao extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnDevolver;
     private javax.swing.JButton BtnEditar;
     private javax.swing.JButton BtnExcluir;
     private javax.swing.JButton BtnNovo;
