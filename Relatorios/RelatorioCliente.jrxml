@@ -50,7 +50,7 @@
 	<columnHeader>
 		<band height="40" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="30" height="20" uuid="36a1ee47-dc5c-4a5b-9577-2eab7565c5c7"/>
+				<reportElement x="0" y="0" width="19" height="20" uuid="36a1ee47-dc5c-4a5b-9577-2eab7565c5c7"/>
 				<text><![CDATA[ID]]></text>
 			</staticText>
 			<staticText>
@@ -58,7 +58,7 @@
 				<text><![CDATA[Celular]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="196" y="0" width="137" height="20" uuid="a08643fb-42c2-40b2-8ea0-90ae5fdbedcf"/>
+				<reportElement x="185" y="0" width="137" height="20" uuid="a08643fb-42c2-40b2-8ea0-90ae5fdbedcf"/>
 				<text><![CDATA[E-mail]]></text>
 			</staticText>
 			<staticText>
@@ -66,7 +66,7 @@
 				<text><![CDATA[Telefone]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="30" y="0" width="166" height="20" uuid="16296282-06d2-41e7-bc4f-726831dae389"/>
+				<reportElement x="19" y="0" width="166" height="20" uuid="16296282-06d2-41e7-bc4f-726831dae389"/>
 				<text><![CDATA[Nome]]></text>
 			</staticText>
 			<staticText>
@@ -79,7 +79,7 @@
 	<detail>
 		<band height="29" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="30" height="20" uuid="cdf2e81f-615f-43eb-97e6-81875fd93d02"/>
+				<reportElement x="0" y="0" width="19" height="20" uuid="cdf2e81f-615f-43eb-97e6-81875fd93d02"/>
 				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -87,11 +87,11 @@
 				<textFieldExpression><![CDATA[$F{celular}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="196" y="0" width="137" height="20" uuid="60a018e7-ee3c-42d3-9921-e05feacb632e"/>
+				<reportElement x="185" y="0" width="137" height="20" uuid="60a018e7-ee3c-42d3-9921-e05feacb632e"/>
 				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="30" y="0" width="166" height="20" uuid="22f33745-dc69-4c0a-b693-3b10e5cdc1a9"/>
+				<reportElement x="19" y="0" width="166" height="20" uuid="22f33745-dc69-4c0a-b693-3b10e5cdc1a9"/>
 				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
 			</textField>
 			<textField>

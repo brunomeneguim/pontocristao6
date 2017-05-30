@@ -44,19 +44,19 @@
 	<columnHeader>
 		<band height="37" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="57" height="20" uuid="42c865dd-cc5a-4cb6-83a2-a100721399f1"/>
+				<reportElement x="0" y="0" width="20" height="20" uuid="42c865dd-cc5a-4cb6-83a2-a100721399f1"/>
 				<text><![CDATA[ID]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="57" y="0" width="100" height="20" uuid="5374d674-2632-4bf2-9f6d-df0b88772249"/>
+				<reportElement x="20" y="0" width="100" height="20" uuid="5374d674-2632-4bf2-9f6d-df0b88772249"/>
 				<text><![CDATA[Data da Conta]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="157" y="0" width="100" height="20" uuid="5b93559f-6a78-4d0d-8a88-44141282060f"/>
+				<reportElement x="120" y="0" width="100" height="20" uuid="5b93559f-6a78-4d0d-8a88-44141282060f"/>
 				<text><![CDATA[Data do Vencimento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="257" y="0" width="142" height="20" uuid="e3c17a49-0a33-4c63-9a7f-cf2f489dc2c9"/>
+				<reportElement x="220" y="0" width="179" height="20" uuid="e3c17a49-0a33-4c63-9a7f-cf2f489dc2c9"/>
 				<text><![CDATA[Descrição]]></text>
 			</staticText>
 			<staticText>
@@ -72,19 +72,19 @@
 	<detail>
 		<band height="33" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="57" height="20" uuid="cbed01a0-ba6f-4a53-b8e0-e59fe0629021"/>
+				<reportElement x="0" y="0" width="20" height="20" uuid="cbed01a0-ba6f-4a53-b8e0-e59fe0629021"/>
 				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="57" y="0" width="100" height="20" uuid="8a319527-1bfc-4ded-95ee-6a679587e54b"/>
+				<reportElement x="20" y="0" width="100" height="20" uuid="8a319527-1bfc-4ded-95ee-6a679587e54b"/>
 				<textFieldExpression><![CDATA[$F{data}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="157" y="0" width="100" height="20" uuid="f2e43533-21f9-40cc-a0a9-58f5c8e9fdc6"/>
+				<reportElement x="120" y="0" width="100" height="20" uuid="f2e43533-21f9-40cc-a0a9-58f5c8e9fdc6"/>
 				<textFieldExpression><![CDATA[$F{dataVencimento}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="257" y="0" width="142" height="20" uuid="1c4f946f-dd92-4602-9d42-104890c85ec5"/>
+				<reportElement x="220" y="0" width="179" height="20" uuid="1c4f946f-dd92-4602-9d42-104890c85ec5"/>
 				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
 			</textField>
 			<textField>
