@@ -119,7 +119,7 @@
 			</staticText>
 			<staticText>
 				<reportElement x="455" y="0" width="100" height="20" uuid="29d36739-1314-4853-b6eb-4fdbce1c767d"/>
-				<text><![CDATA[quantidade]]></text>
+				<text><![CDATA[Quantidade]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
