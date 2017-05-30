@@ -148,8 +148,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem4);
 
+        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pontocristao/icones/Contas.png"))); // NOI18N
         jMenu7.setText("Conta a Pagar");
 
+        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pontocristao/icones/BtnContaPagar.png"))); // NOI18N
         jMenuItem6.setText("Cadastrar Conta a Pagar");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,6 +160,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         });
         jMenu7.add(jMenuItem6);
 
+        jMenuItem15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pontocristao/icones/BtnTipoContaPagar.png"))); // NOI18N
         jMenuItem15.setText("Cadastrar Tipo de Conta a Pagar");
         jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
