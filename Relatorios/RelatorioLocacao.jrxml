@@ -99,22 +99,27 @@
 		<band height="40" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="0" width="40" height="20" uuid="228c9d96-90bd-4955-bc43-9471ca6a1d21"/>
+				<textElement textAlignment="Center"/>
 				<text><![CDATA[ID]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="40" y="0" width="100" height="20" uuid="b4603581-7eb1-4b2c-9d00-5c06b3c3724f"/>
+				<textElement textAlignment="Center"/>
 				<text><![CDATA[Data da Locação]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="140" y="0" width="100" height="20" uuid="3b1eeb9b-cbde-4cad-9c4a-861ad4ebd4d9"/>
+				<textElement textAlignment="Center"/>
 				<text><![CDATA[Valor Total]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="240" y="0" width="156" height="20" uuid="741084d6-d493-4c96-9874-9bf0270b4b93"/>
+				<textElement textAlignment="Center"/>
 				<text><![CDATA[Nome]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="396" y="0" width="159" height="20" uuid="6ebf8bb4-6748-4000-ba95-6ae6cab75f60"/>
+				<textElement textAlignment="Center"/>
 				<text><![CDATA[Funcionario]]></text>
 			</staticText>
 		</band>
@@ -123,22 +128,27 @@
 		<band height="29" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="40" height="20" uuid="21521d68-a6cb-4fdb-92bf-24edc8e8e37e"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="40" y="0" width="100" height="20" uuid="19b0fce4-a9e7-498d-9ff8-d2b046efe447"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{data}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="140" y="0" width="100" height="20" uuid="a23c5bb4-4759-4569-a2f0-b4f33e1b0c8d"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{valorTotal}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="240" y="0" width="156" height="20" uuid="d3f16626-85d8-46fb-9af0-9f3d10f9a9ed"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="396" y="0" width="159" height="20" uuid="6c352e6e-f696-4335-80d1-61a50c9731a0"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{login}]]></textFieldExpression>
 			</textField>
 		</band>

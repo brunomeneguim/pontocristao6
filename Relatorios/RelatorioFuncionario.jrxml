@@ -72,22 +72,27 @@
 		<band height="50">
 			<staticText>
 				<reportElement x="0" y="0" width="100" height="20" uuid="d626cac8-fa93-40b0-a461-9f47125e84b0"/>
+				<textElement textAlignment="Center"/>
 				<text><![CDATA[ID]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="100" y="0" width="156" height="20" uuid="0c68d8d9-53b4-4469-94c5-c0b4fcf7a55b"/>
+				<textElement textAlignment="Center"/>
 				<text><![CDATA[Nome]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="256" y="0" width="129" height="20" uuid="77c5c4f5-24ae-4f86-9e07-116e004f172c"/>
+				<textElement textAlignment="Center"/>
 				<text><![CDATA[E-mail]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="385" y="0" width="83" height="20" uuid="4d24a136-1fbe-4714-9b63-b6e3fca70d9a"/>
+				<textElement textAlignment="Center"/>
 				<text><![CDATA[Telefone]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="468" y="0" width="87" height="20" uuid="4fed9d05-8745-4fdc-8aab-36234acd9ac8"/>
+				<textElement textAlignment="Center"/>
 				<text><![CDATA[Celular]]></text>
 			</staticText>
 		</band>
@@ -96,22 +101,27 @@
 		<band height="36" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="100" height="20" uuid="2358a0ef-212c-4d94-acb1-bf27ca8fd8e0"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="100" y="0" width="156" height="20" uuid="8d61ed02-71a0-4ea9-92b2-b58644e941db"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="256" y="0" width="129" height="20" uuid="7472aa7a-0278-4cff-ac21-a4e253f35f38"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="385" y="0" width="83" height="20" uuid="7626cba9-e786-4aeb-abea-b19ee88bb137"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{telefoneResidencial}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="468" y="0" width="87" height="20" uuid="52c8547f-b98d-44e4-9b46-b2000c5e72d3"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{celular}]]></textFieldExpression>
 			</textField>
 		</band>
