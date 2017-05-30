@@ -74,24 +74,38 @@
 	<columnHeader>
 		<band height="37" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="45" height="20" uuid="8dabf6cf-ac00-43e2-851b-b934db0e88ef"/>
-				<textElement textAlignment="Justified"/>
+				<reportElement x="0" y="0" width="23" height="20" uuid="8dabf6cf-ac00-43e2-851b-b934db0e88ef"/>
+				<textElement textAlignment="Center">
+					<font isStrikeThrough="false"/>
+				</textElement>
 				<text><![CDATA[ID]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="45" y="0" width="239" height="20" uuid="ef5bee1d-0cba-404d-9e23-99ce8ab3f73f"/>
+				<reportElement x="23" y="0" width="229" height="20" uuid="ef5bee1d-0cba-404d-9e23-99ce8ab3f73f"/>
+				<textElement textAlignment="Center">
+					<font isStrikeThrough="false"/>
+				</textElement>
 				<text><![CDATA[Nome]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="284" y="0" width="69" height="20" uuid="b6254ea2-5fe9-4c68-bcc2-e32dee6f8bbc"/>
+				<reportElement x="252" y="0" width="69" height="20" uuid="b6254ea2-5fe9-4c68-bcc2-e32dee6f8bbc"/>
+				<textElement textAlignment="Center">
+					<font isStrikeThrough="false"/>
+				</textElement>
 				<text><![CDATA[Quantidade]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="353" y="0" width="100" height="20" uuid="d3f622b8-a674-43d6-bc3e-bf7da96f1ba2"/>
+				<reportElement x="321" y="0" width="100" height="20" uuid="d3f622b8-a674-43d6-bc3e-bf7da96f1ba2"/>
+				<textElement textAlignment="Center">
+					<font isStrikeThrough="false"/>
+				</textElement>
 				<text><![CDATA[Valor de Venda]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="453" y="0" width="100" height="20" uuid="3cbc6b1a-df60-4802-90e8-c40182444f2d"/>
+				<reportElement x="421" y="0" width="134" height="20" uuid="3cbc6b1a-df60-4802-90e8-c40182444f2d"/>
+				<textElement textAlignment="Center">
+					<font isStrikeThrough="false"/>
+				</textElement>
 				<text><![CDATA[Fornecedor]]></text>
 			</staticText>
 		</band>
@@ -99,24 +113,38 @@
 	<detail>
 		<band height="29" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="45" height="20" uuid="95ff3772-3d7b-4b2a-a50d-cd217ae874ae"/>
-				<textElement textAlignment="Justified"/>
+				<reportElement x="0" y="0" width="23" height="20" uuid="95ff3772-3d7b-4b2a-a50d-cd217ae874ae"/>
+				<textElement textAlignment="Center">
+					<font isStrikeThrough="false"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="45" y="0" width="239" height="20" uuid="091c00f7-c0a2-413f-b896-7247d8b6abed"/>
+				<reportElement x="23" y="0" width="229" height="20" uuid="091c00f7-c0a2-413f-b896-7247d8b6abed"/>
+				<textElement textAlignment="Center">
+					<font isStrikeThrough="false"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="284" y="0" width="69" height="20" uuid="fac7febd-82c8-467f-9e6f-f47eb0c93c53"/>
+				<reportElement x="252" y="0" width="69" height="20" uuid="fac7febd-82c8-467f-9e6f-f47eb0c93c53"/>
+				<textElement textAlignment="Center">
+					<font isStrikeThrough="false"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{quantidade}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="353" y="0" width="100" height="20" uuid="5413b132-42b3-478e-8028-654aa3455911"/>
+				<reportElement x="321" y="0" width="100" height="20" uuid="5413b132-42b3-478e-8028-654aa3455911"/>
+				<textElement textAlignment="Center">
+					<font isStrikeThrough="false"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{valorVenda}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="453" y="0" width="100" height="20" uuid="c371c995-5c9b-4f61-81c2-e088ad71d639"/>
+				<reportElement x="421" y="0" width="134" height="20" uuid="c371c995-5c9b-4f61-81c2-e088ad71d639"/>
+				<textElement textAlignment="Center">
+					<font isStrikeThrough="false"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{nomeFantasia}]]></textFieldExpression>
 			</textField>
 		</band>
