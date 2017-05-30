@@ -27,6 +27,9 @@ public class Locacao extends ModeloBase {
 
     @Column(nullable = false)
     private Boolean pago;
+    
+    @Column(nullable = false)
+    private Boolean devolvido;
 
     @OneToMany(mappedBy = "locacao")
     private Set<PagamentoLocacao> pagamentos = new HashSet<PagamentoLocacao>(0);
@@ -77,6 +80,14 @@ public class Locacao extends ModeloBase {
 
     public void setPago(Boolean pago) {
         this.pago = pago;
+    }
+    
+    public Boolean getDevolvido() {
+        return devolvido;
+    }
+
+    public void setDevolvido(Boolean devolvido) {
+        this.devolvido = devolvido;
     }
 
     public Set<PagamentoLocacao> getPagamentos() {

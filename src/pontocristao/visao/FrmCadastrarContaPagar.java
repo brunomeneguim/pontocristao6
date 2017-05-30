@@ -1,6 +1,7 @@
 package pontocristao.visao;
 
 import java.awt.*;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import pontocristao.controle.*;
 import pontocristao.modelo.*;
@@ -32,6 +33,7 @@ public class FrmCadastrarContaPagar extends javax.swing.JDialog {
         setLocationRelativeTo(null);
 
         jcData.setEnabled(false);
+        jcData.setDate(new Date());
         
         jcDataVencimento.requestFocus();
 
@@ -72,17 +74,32 @@ public class FrmCadastrarContaPagar extends javax.swing.JDialog {
     }
 
     private void AtualizarCampos() {
-        //Fazer
+        jcData.setDate(controle.getContaPagar().getData());
+        jcDataVencimento.setDate(controle.getContaPagar().getDataVencimento());
+        jspValor.setValue(controle.getContaPagar().getValor());
+        txtDescricao.setText(controle.getContaPagar().getDescricao());
+        jComboTipo.setSelectedItem(RetornarDescricaoTipoContaPagar(controle.getContaPagar().getTipoContaPagar()));
     }
 
     private void AtualizarModelo() {
-        //Fazer
+        controle.getContaPagar().setData(jcData.getDate());
+        controle.getContaPagar().setDataVencimento(jcDataVencimento.getDate());
+        controle.getContaPagar().setDescricao(txtDescricao.getText());
+        controle.getContaPagar().setTipoContaPagar(listaTiposContaPagar.get(jComboTipo.getSelectedIndex()));
+        controle.getContaPagar().setValor((Double)jspValor.getValue());
     }
 
     public Boolean ValidaCampos() {
         Boolean retorno = true;
 
-        //Fazer
+        if (jcData.getDate() == null
+                || jcDataVencimento.getDate() == null
+                || jspValor.getValue().toString().equals("")
+                || txtDescricao.getText().equals("")
+                || jComboTipo.getSelectedIndex() < 0) {
+            retorno = false;
+            JOptionPane.showMessageDialog(null, "Todos os campos em negrito devem estar preenchidos.");
+        }
         
         return retorno;
     }

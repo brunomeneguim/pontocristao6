@@ -37,7 +37,9 @@
                       <Component id="BtnExcluir" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="BtnPagamento" min="-2" pref="124" max="-2" attributes="0"/>
-                      <EmptySpace pref="173" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="BtnDevolver" min="-2" pref="122" max="-2" attributes="0"/>
+                      <EmptySpace pref="45" max="32767" attributes="0"/>
                       <Component id="txtPesquisar" min="-2" pref="200" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="BtnPesquisar" min="-2" max="-2" attributes="0"/>
@@ -64,6 +66,7 @@
                       <Component id="BtnPesquisar" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
                   <Component id="BtnPagamento" max="32767" attributes="0"/>
+                  <Component id="BtnDevolver" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane1" pref="498" max="32767" attributes="0"/>
@@ -165,6 +168,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnPagamentoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="BtnDevolver">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Devolver"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnDevolverActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
