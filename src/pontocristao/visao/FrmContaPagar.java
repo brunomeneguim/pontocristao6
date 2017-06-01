@@ -45,7 +45,7 @@ public class FrmContaPagar extends javax.swing.JDialog {
     }
 
     private void AjustarTabela() {
-        String[] colunas = new String[]{"Descricao", "Valor", "Data de Vencimento", "Pago", "Tipo"};
+        String[] colunas = new String[]{"Descrição", "Valor", "Data de Vencimento", "Pago", "Tipo"};
         modeloTabela = new DefaultTableModel(null, colunas) {
             @Override
             public boolean isCellEditable(int row, int col) {

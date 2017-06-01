@@ -40,6 +40,7 @@ public class FrmLocacao extends javax.swing.JDialog {
         BtnEditar.setEnabled(false);
         BtnExcluir.setEnabled(false);
         BtnPagamento.setEnabled(false);
+        BtnDevolver.setEnabled(false);
 
         Listar();
     }
