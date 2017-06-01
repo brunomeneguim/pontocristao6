@@ -91,6 +91,36 @@ public class ControleLocacao extends ControleBase {
             return getTabelaPrecoLocacao().getValorNormal();
         }
     }
+    
+    public Exception DevolverLocacao(long id) {
+        String sql = "SELECT * FROM Locacao WHERE Locacao.Id = " + id;
+        Exception erro = null;
+
+        try {
+            Query q = getSessao().createSQLQuery(sql).addEntity(Locacao.class);
+            List resultados = q.list();
+
+            if (resultados.size() == 1) {
+                Locacao locacao = (Locacao) resultados.get(0);
+                
+                locacao.setDevolvido(true);
+                
+                Transaction transacao = getSessao().getTransaction();
+                transacao.begin();
+                
+                getSessao().saveOrUpdate(locacao);
+                
+                transacao.commit();
+                
+            } else {
+                throw new Exception("Não foi possível encontrar a locação com o id " + id);
+            }
+        } catch (Exception e) {
+            erro = e;
+        } finally {
+            return erro;
+        }
+    }
 
     public Exception RecuperarLocacao(long id) {
         String sql = "SELECT * FROM Locacao WHERE Locacao.Id = " + id;
@@ -154,6 +184,7 @@ public class ControleLocacao extends ControleBase {
     public Exception Salvar() {
         if (getLocacao().getId() <= 0) {
             getLocacao().setData(new Date());
+            getLocacao().setDevolvido(false);
         }
         return Salvar(getModelo());
     }

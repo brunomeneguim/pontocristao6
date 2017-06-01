@@ -46,7 +46,7 @@ public class FrmLocacao extends javax.swing.JDialog {
     }
 
     private void AjustarTabela() {
-        String[] colunas = new String[]{"Data", "Cliente", "Valor", "Pago"};
+        String[] colunas = new String[]{"Data", "Cliente", "Valor", "Pago", "Devolvido"};
         modeloTabela = new DefaultTableModel(null, colunas) {
             @Override
             public boolean isCellEditable(int row, int col) {
@@ -64,17 +64,23 @@ public class FrmLocacao extends javax.swing.JDialog {
                         BtnEditar.setEnabled(true);
                         BtnExcluir.setEnabled(true);
 
+                        BtnPagamento.setEnabled(false);
+                        BtnDevolver.setEnabled(false);
+                        
                         int linhaSelecionada = jTableLista.getSelectedRow();
                         Locacao locacao = lista.get(linhaSelecionada);
 
                         if (!locacao.getPago()) {
                             BtnPagamento.setEnabled(true);
+                        }  else if(!locacao.getDevolvido()) {
+                            BtnDevolver.setEnabled(true);
                         }
 
                     } else {
                         BtnEditar.setEnabled(false);
                         BtnExcluir.setEnabled(false);
                         BtnPagamento.setEnabled(false);
+                        BtnDevolver.setEnabled(false);
                     }
                 }
             }
@@ -102,7 +108,8 @@ public class FrmLocacao extends javax.swing.JDialog {
             locacao.getData(),
             locacao.getCliente().getNome(),
             locacao.getValorTotal(),
-            locacao.getPago()
+            locacao.getPago(),
+            locacao.getDevolvido()
         };
     }
 
@@ -362,10 +369,17 @@ public class FrmLocacao extends javax.swing.JDialog {
                 try {
                     locacao.setDevolvido(true);
 
-                    //controle.DevolverLocacao(locacao.getId());
+                    Exception erro = controle.DevolverLocacao(locacao.getId());
+                    
+                    if (erro != null) {
+                        throw erro;
+                    }
+                    
                     modeloTabela.removeRow(linhaSelecionada);
                     modeloTabela.insertRow(linhaSelecionada, RetornarNovaLinha(locacao));
 
+                    controle = new ControleLocacao();
+                    
                 } catch (Exception e) {
                     Utilidades.MostrarMensagemErro(e);
                 }
