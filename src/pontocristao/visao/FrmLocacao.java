@@ -210,6 +210,7 @@ public class FrmLocacao extends javax.swing.JDialog {
             }
         });
 
+        BtnDevolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pontocristao/icones/BtnDevolver.png"))); // NOI18N
         BtnDevolver.setText("Devolver");
         BtnDevolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
