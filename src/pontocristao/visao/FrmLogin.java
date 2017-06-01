@@ -8,16 +8,16 @@ import pontocristao.modelo.Funcionario;
 public class FrmLogin extends javax.swing.JDialog {
 
     private ControleLogin controle;
-    
+
     public FrmLogin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         this.setLocationRelativeTo(null);
-        
+
         InicializarControle();
     }
-    
+
     private void InicializarControle() {
         this.controle = new ControleLogin();
     }
@@ -101,10 +101,10 @@ public class FrmLogin extends javax.swing.JDialog {
     private void BtnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSairActionPerformed
         Object[] botoes = {"Sim", "Não"};
         int resposta = JOptionPane.showOptionDialog(null,
-            "Deseja sair do login?",
-            "Confirmação",
-            JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null,
-            botoes, botoes[0]);
+                "Deseja sair do login?",
+                "Confirmação",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null,
+                botoes, botoes[0]);
         if (resposta == 0) {
             this.dispose();
         }
@@ -112,12 +112,11 @@ public class FrmLogin extends javax.swing.JDialog {
 
     private void BtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnConfirmarActionPerformed
         Funcionario f = controle.FazerLogin(txtUsuario.getText(), String.valueOf(pSenha.getPassword()));
-        
-        if(f != null)
-        {
+
+        if (f != null) {
             FrmPrincipal frame = new FrmPrincipal();
             frame.setVisible(true);
-            
+
             this.dispose();
         }
     }//GEN-LAST:event_BtnConfirmarActionPerformed

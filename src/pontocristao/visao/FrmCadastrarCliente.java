@@ -247,7 +247,7 @@ public class FrmCadastrarCliente extends javax.swing.JDialog {
             Utilidades.MostrarMensagemErro(e);
         }
     }
-    
+
     private void AtualizarTelaPessoaFisica() {
         txtCpf.setEnabled(true);
         txtRg.setEnabled(true);
@@ -263,7 +263,7 @@ public class FrmCadastrarCliente extends javax.swing.JDialog {
             controle.getCliente().setEndereco(new Endereco());
         }
     }
-    
+
     private void AtualizarTelaPessoaJuridica() {
         txtCnpj.setEnabled(true);
 

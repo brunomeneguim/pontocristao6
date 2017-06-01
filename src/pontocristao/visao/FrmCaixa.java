@@ -1,13 +1,9 @@
 package pontocristao.visao;
 
 import java.awt.*;
-import java.text.NumberFormat;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.NumberFormatter;
 import pontocristao.controle.*;
 import pontocristao.modelo.*;
 import pontocristao.util.Utilidades;
@@ -39,7 +35,7 @@ public class FrmCaixa extends javax.swing.JDialog {
         this.setBounds(bounds);
 
         jspSaldo.setEnabled(false);
-        
+
         Listar();
         AtualizarSaldo();
     }
@@ -77,39 +73,28 @@ public class FrmCaixa extends javax.swing.JDialog {
         String operacao = "";
         String tipo = "";
         String descricao = "";
-        
-        if(movimentacao instanceof MovimentacaoCaixaContaPagar)
-        {
+
+        if (movimentacao instanceof MovimentacaoCaixaContaPagar) {
             operacao = "Débito";
             tipo = "Pagamento de conta";
             descricao = "Identificador da conta: " + ((MovimentacaoCaixaContaPagar) movimentacao).getContaPagar().getId();
-        }
-        else if(movimentacao instanceof MovimentacaoCaixaDeposito)
-        {
+        } else if (movimentacao instanceof MovimentacaoCaixaDeposito) {
             operacao = "Crédito";
             tipo = "Depósito";
             descricao = ((MovimentacaoCaixaDeposito) movimentacao).getDescricao();
-        }
-        else if(movimentacao instanceof MovimentacaoCaixaLocacao)
-        {
+        } else if (movimentacao instanceof MovimentacaoCaixaLocacao) {
             operacao = "Crédito";
             tipo = "Pagamento de locação";
             descricao = "Identificador da locação: " + ((MovimentacaoCaixaLocacao) movimentacao).getLocacao().getId();
-        }
-        else if(movimentacao instanceof MovimentacaoCaixaRetirada)
-        {
+        } else if (movimentacao instanceof MovimentacaoCaixaRetirada) {
             operacao = "Débito";
             tipo = "Retirada";
             descricao = ((MovimentacaoCaixaRetirada) movimentacao).getDescricao();
-        }
-        else if(movimentacao instanceof MovimentacaoCaixaVenda)
-        {
+        } else if (movimentacao instanceof MovimentacaoCaixaVenda) {
             operacao = "Crédito";
             tipo = "Pagamento de venda";
             descricao = "Identificador da venda: " + ((MovimentacaoCaixaVenda) movimentacao).getVenda().getId();
-        }
-        else
-        {
+        } else {
             Utilidades.MostrarMensagemErro(new Exception("Tipo desconhecido."));
         }
 
@@ -129,9 +114,8 @@ public class FrmCaixa extends javax.swing.JDialog {
             Utilidades.MostrarMensagemErro(e);
         }
     }
-    
-    public void AtualizarSaldo()
-    {
+
+    public void AtualizarSaldo() {
         double saldo = controle.RetornarCaixa().getSaldo();
         jspSaldo.setValue(saldo);
     }
@@ -243,20 +227,20 @@ public class FrmCaixa extends javax.swing.JDialog {
 
     private void BtnRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRetirarActionPerformed
         FrmCaixaRetirada frmCaixaRetirada = FrmCaixaRetirada.Mostrar(frame);
-        
+
         if (frmCaixaRetirada.getModeloAtualizado()) {
             MovimentacaoCaixa movimentacao = frmCaixaRetirada.getMovimentacao();
-            modeloTabela.addRow( RetornarNovaLinha(movimentacao));
+            modeloTabela.addRow(RetornarNovaLinha(movimentacao));
             jspSaldo.setValue(movimentacao.getCaixa().getSaldo());
         }
     }//GEN-LAST:event_BtnRetirarActionPerformed
 
     private void BtnDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDepositarActionPerformed
         FrmCaixaDeposito frmCaixaDeposito = FrmCaixaDeposito.Mostrar(frame);
-        
+
         if (frmCaixaDeposito.getModeloAtualizado()) {
             MovimentacaoCaixa movimentacao = frmCaixaDeposito.getMovimentacao();
-            modeloTabela.addRow( RetornarNovaLinha(movimentacao));
+            modeloTabela.addRow(RetornarNovaLinha(movimentacao));
             jspSaldo.setValue(movimentacao.getCaixa().getSaldo());
         }
     }//GEN-LAST:event_BtnDepositarActionPerformed

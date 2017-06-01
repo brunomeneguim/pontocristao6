@@ -206,11 +206,11 @@ public class FrmCaixaDeposito extends javax.swing.JDialog {
             try {
                 Transaction transacao = controle.getSessao().getTransaction();
                 transacao.begin();
-                
+
                 controle.AdicionarMovimentacao(movimentacao);
-                
+
                 transacao.commit();
-                
+
             } catch (Exception e) {
                 erro = e;
             }

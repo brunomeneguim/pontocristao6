@@ -4,7 +4,7 @@ import java.awt.Frame;
 
 /**
  *
- * @author Bruno
+ * @author Marcondes
  */
 public class FrmSobre extends javax.swing.JDialog {
 

@@ -150,31 +150,29 @@ public class PopularBancoTeste {
 
             //Salva uma nova movimentação de caixa de locação
             sessao.save(movimentacaoCaixaLocacao);
-            
+
             Venda venda = RetornarNovaVenda();
             venda.setCliente(clientePessoaFisica);
             venda.setFuncionario(funcionario);
-            
+
             ItemVenda itemVenda = RetornarNovoItemVenda();
             itemVenda.setProduto(produto);
-            
+
             itemVenda.setVenda(venda);
-            
+
             //Salva uma nova venda
             sessao.save(venda);
-            
+
             //Salva um novo item de venda            
             sessao.save(itemVenda);
-            
-            
-            
+
             PagamentoVenda pagamentoVenda = RetornarNovoPagamentoVenda();
             pagamentoVenda.setTipoPagamento(tipoPagamento);
             pagamentoVenda.setVenda(venda);
-            
+
             //Salva um novo pagamento de venda
             sessao.save(pagamentoVenda);
-            
+
             transacao.commit();
             sessao.close();
         } catch (Exception e) {
@@ -423,7 +421,7 @@ public class PopularBancoTeste {
         venda.setData(new Date());
         venda.setPago(false);
         venda.setValorTotal(45.56);
-        
+
         return venda;
     }
 
@@ -432,7 +430,7 @@ public class PopularBancoTeste {
 
         item.setQuantidade(1);
         item.setValorUnitario(45.56);
-        
+
         return item;
     }
 
@@ -442,7 +440,7 @@ public class PopularBancoTeste {
         pagamento.setData(new Date());
         pagamento.setDescricao("Venda de teste");
         pagamento.setValor(45.56);
-        
+
         return pagamento;
     }
 
@@ -453,7 +451,7 @@ public class PopularBancoTeste {
         movimentacao.setDataFaturar(new Date());
         movimentacao.setFaturado(true);
         movimentacao.setValor(45.56);
-        
+
         return movimentacao;
     }
 
@@ -462,7 +460,7 @@ public class PopularBancoTeste {
 
         movimentacao.setData(new Date());
         movimentacao.setValor(102.15);
-        
+
         return movimentacao;
     }
 
@@ -472,7 +470,7 @@ public class PopularBancoTeste {
         movimentacao.setData(new Date());
         movimentacao.setValor(102.15);
         movimentacao.setDescricao("Movimentação de teste");
-        
+
         return movimentacao;
     }
 
@@ -482,7 +480,7 @@ public class PopularBancoTeste {
         movimentacao.setData(new Date());
         movimentacao.setValor(102.15);
         movimentacao.setDescricao("Movimentação de teste");
-        
+
         return movimentacao;
     }
 

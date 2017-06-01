@@ -40,7 +40,7 @@ public class FrmFornecedor extends javax.swing.JDialog {
 
         BtnEditar.setEnabled(false);
         BtnExcluir.setEnabled(false);
-        
+
         ListarFornecedores();
     }
 

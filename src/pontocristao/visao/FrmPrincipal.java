@@ -674,7 +674,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem24ActionPerformed
 
     private void jMenuItem23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem23ActionPerformed
-       String relatorio = ".\\Relatorios\\RelatorioVenda.jasper";
+        String relatorio = ".\\Relatorios\\RelatorioVenda.jasper";
         String arquivo = ".\\Relatorios.\\RelatorioVenda.pdf";
 
         try {
@@ -700,7 +700,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem23ActionPerformed
 
     private void jMenuItem26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem26ActionPerformed
-       String relatorio = ".\\Relatorios\\RelatorioCaixa.jasper";
+        String relatorio = ".\\Relatorios\\RelatorioCaixa.jasper";
         String arquivo = ".\\Relatorios.\\RelatorioCaixa.pdf";
 
         try {

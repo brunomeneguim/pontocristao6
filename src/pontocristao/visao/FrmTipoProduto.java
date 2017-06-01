@@ -240,7 +240,7 @@ public class FrmTipoProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnNovoActionPerformed
 
     private void BtnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSairActionPerformed
-       Object[] botoes = {"Sim", "Não"};
+        Object[] botoes = {"Sim", "Não"};
         int resposta = JOptionPane.showOptionDialog(null,
                 "Deseja sair da lista de tipos de produto?",
                 "Confirmação",
@@ -256,7 +256,7 @@ public class FrmTipoProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnPesquisarActionPerformed
 
     private void BtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnExcluirActionPerformed
-         if (lista != null) {
+        if (lista != null) {
 
             Boolean podeExcluir = Utilidades.MostrarMensagemPergunta("Confirmação", "Tem certeza que deseja excluir o tipo de produto?", false);
 

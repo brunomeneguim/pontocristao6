@@ -1,9 +1,7 @@
 package pontocristao.visao;
 
 import java.awt.*;
-import java.text.NumberFormat;
 import javax.swing.JOptionPane;
-import javax.swing.text.NumberFormatter;
 import pontocristao.controle.*;
 import pontocristao.modelo.*;
 import pontocristao.util.Utilidades;
@@ -37,7 +35,7 @@ public class FrmCadastrarProduto extends javax.swing.JDialog {
         txtCodigo.setEnabled(false);
         jcDataCadastro.setEnabled(false);
         txtCodigoBarra.setEnabled(false);
-        
+
         txtNomeProduto.requestFocus();
 
         InicializarControle(id);
@@ -52,21 +50,21 @@ public class FrmCadastrarProduto extends javax.swing.JDialog {
 
     private void InicializarControle(long id) {
         controle = new ControleProduto();
-        
+
         listaFornecedores = controle.RetornarFornecedores();
         listaTiposProduto = controle.RetornarTiposProduto();
-        
+
         for (Fornecedor fornecedor : listaFornecedores) {
             jComboFornecedor.addItem(RetornarDescricaoFornecedor(fornecedor));
         }
-        
+
         for (TipoProduto tipoProduto : listaTiposProduto) {
             jComboTipoProduto.addItem(RetornarDescricaoTipoProduto(tipoProduto));
         }
-        
+
         jComboFornecedor.setSelectedIndex(-1);
         jComboTipoProduto.setSelectedIndex(-1);
-        
+
         if (id > 0) {
             Exception erro = controle.RecuperarProduto(id);
 
@@ -77,11 +75,11 @@ public class FrmCadastrarProduto extends javax.swing.JDialog {
             }
         }
     }
-    
+
     private String RetornarDescricaoFornecedor(Fornecedor fornecedor) {
         return fornecedor.getId() + " - " + fornecedor.getNomeFantasia() + " - " + fornecedor.getCnpj();
     }
-    
+
     private String RetornarDescricaoTipoProduto(TipoProduto tipoProduto) {
         return tipoProduto.getId() + " - " + tipoProduto.getDescricao();
     }
@@ -100,18 +98,18 @@ public class FrmCadastrarProduto extends javax.swing.JDialog {
     private void AtualizarModelo() {
         controle.getProduto().setCodigoBarra(txtCodigoBarra.getText());
         controle.getProduto().setNome(txtNomeProduto.getText());
-        controle.getProduto().setValorVenda((Double)jspValor.getValue());
-        controle.getProduto().setQuantidade((Integer)jspQuantidade.getValue());
-        
+        controle.getProduto().setValorVenda((Double) jspValor.getValue());
+        controle.getProduto().setQuantidade((Integer) jspQuantidade.getValue());
+
         String descricaoFornecedor = jComboFornecedor.getSelectedItem().toString();
         String descricaoTipoProduto = jComboTipoProduto.getSelectedItem().toString();
-        
+
         for (Fornecedor fornecedor : listaFornecedores) {
             if (RetornarDescricaoFornecedor(fornecedor).equals(descricaoFornecedor)) {
                 controle.getProduto().setFornecedor(fornecedor);
             }
         }
-        
+
         for (TipoProduto tipoProduto : listaTiposProduto) {
             if (RetornarDescricaoTipoProduto(tipoProduto).equals(descricaoTipoProduto)) {
                 controle.getProduto().setTipoProduto(tipoProduto);
@@ -320,7 +318,7 @@ public class FrmCadastrarProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnConfirmarActionPerformed
 
     private void BtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarActionPerformed
-       Object[] botoes = {"Sim", "Não"};
+        Object[] botoes = {"Sim", "Não"};
         int resposta = JOptionPane.showOptionDialog(null,
                 "Deseja cancelar o cadastro de Produto? ",
                 "Confirmação",

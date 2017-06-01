@@ -62,16 +62,14 @@ public class FrmVenda extends javax.swing.JDialog {
                     if (jTableLista.getSelectedRow() >= 0) {
                         BtnEditar.setEnabled(true);
                         BtnExcluir.setEnabled(true);
-                        
+
                         int linhaSelecionada = jTableLista.getSelectedRow();
                         Venda venda = lista.get(linhaSelecionada);
-                        
-                        if(!venda.getPago())
-                        {
+
+                        if (!venda.getPago()) {
                             BtnPagamento.setEnabled(true);
                         }
-                    }
-                    else {
+                    } else {
                         BtnEditar.setEnabled(false);
                         BtnExcluir.setEnabled(false);
                         BtnPagamento.setEnabled(false);

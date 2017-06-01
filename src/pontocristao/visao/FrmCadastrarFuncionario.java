@@ -91,7 +91,7 @@ public class FrmCadastrarFuncionario extends javax.swing.JDialog {
         txtComplemento.setText(controle.getFuncionario().getEndereco().getComplemento());
     }
 
-        private void AtualizarModelo() {
+    private void AtualizarModelo() {
         controle.getFuncionario().setLogin(txtLogin.getText());
         controle.getFuncionario().setDataAdmissao(jcDataAdmissao.getDate());
         controle.getFuncionario().setNome(txtNome.getText());

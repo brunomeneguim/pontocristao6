@@ -27,7 +27,7 @@ public class Locacao extends ModeloBase {
 
     @Column(nullable = false)
     private Boolean pago;
-    
+
     @Column(nullable = false)
     private Boolean devolvido;
 
@@ -81,7 +81,7 @@ public class Locacao extends ModeloBase {
     public void setPago(Boolean pago) {
         this.pago = pago;
     }
-    
+
     public Boolean getDevolvido() {
         return devolvido;
     }

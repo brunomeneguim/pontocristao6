@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 /**
  *
- * @author marco
+ * @author Marcondes
  */
 @Entity
 public class Produto extends ProdutoBase {

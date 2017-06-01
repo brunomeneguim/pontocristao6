@@ -253,26 +253,26 @@ public class FrmPagamentoLocacao extends javax.swing.JDialog {
 
                 Transaction transacao = controle.getSessao().getTransaction();
                 transacao.begin();
-                 
+
                 controle.getSessao().saveOrUpdate(pagamento);
                 controle.getSessao().saveOrUpdate(getLocacao());
-                
+
                 ControleCaixa controleCaixa = new ControleCaixa(controle.getSessao());
-                
+
                 MovimentacaoCaixaLocacao movimentacao = new MovimentacaoCaixaLocacao();
                 movimentacao.setData(new Date());
                 movimentacao.setFuncionario(ControleSistema.getFuncionarioLogado(controle.getSessao()));
                 movimentacao.setLocacao(getLocacao());
                 movimentacao.setValor(valor);
-                
+
                 controleCaixa.AdicionarMovimentacao(movimentacao);
-                
+
                 transacao.commit();
-                
+
                 modeloAtualizado = true;
-                
+
                 this.dispose();
-                
+
             } catch (Exception e) {
                 Utilidades.MostrarMensagemErro(e);
             }

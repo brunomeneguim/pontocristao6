@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Entity
 public class Funcionario extends ModeloBase {
 
-    @Column(nullable = false)    
+    @Column(nullable = false)
     private String nome;
 
     @Column(nullable = false)

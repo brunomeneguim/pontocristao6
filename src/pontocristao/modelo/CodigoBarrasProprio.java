@@ -11,7 +11,7 @@ public class CodigoBarrasProprio extends ModeloBase {
 
     @Column(nullable = false)
     private Integer ultimoCodigo;
-    
+
     @Column(nullable = false)
     private String padrao;
 

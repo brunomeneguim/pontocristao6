@@ -1,18 +1,11 @@
 package pontocristao.visao;
 
 import java.awt.*;
-import java.text.NumberFormat;
-import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.NumberFormatter;
 import org.hibernate.Transaction;
 import pontocristao.controle.*;
 import pontocristao.modelo.*;
@@ -21,7 +14,7 @@ import pontocristao.util.Utilidades;
 
 /**
  *
- * @author Marcondes teste
+ * @author Marcondes
  */
 public class FrmCadastrarLocacao extends javax.swing.JDialog {
 
@@ -426,33 +419,29 @@ public class FrmCadastrarLocacao extends javax.swing.JDialog {
                 transacao.begin();
 
                 double totalPago = 0;
-                
+
                 for (PagamentoLocacao pagamento : getLocacao().getPagamentos()) {
                     totalPago += pagamento.getValor();
                 }
-                
-                if (totalPago >= getLocacao().getValorTotal())
-                {
+
+                if (totalPago >= getLocacao().getValorTotal()) {
                     getLocacao().setPago(true);
-                } 
-                else
-                {
+                } else {
                     getLocacao().setPago(false);
                 }
-                
+
                 controle.getSessao().saveOrUpdate(getLocacao());
 
                 Cliente cliente = controle.getLocacao().getCliente();
-                
+
                 for (ItemLocacao item : getLocacao().getItensLocacao()) {
-                    if(item.getId() == 0)
-                    {
+                    if (item.getId() == 0) {
                         cliente.setTotalLocacoes(cliente.getTotalLocacoes() + 1);
                     }
-                    
+
                     controle.getSessao().saveOrUpdate(item);
                 }
-                
+
                 controle.getSessao().saveOrUpdate(cliente);
 
                 transacao.commit();

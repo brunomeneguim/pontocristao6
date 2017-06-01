@@ -335,7 +335,7 @@ public class FrmContaPagar extends javax.swing.JDialog {
                     controle.PagarConta(contaPagar.getId());
                     modeloTabela.removeRow(linhaSelecionada);
                     modeloTabela.insertRow(linhaSelecionada, RetornarNovaLinha(contaPagar));
-                    
+
                 } catch (Exception e) {
                     Utilidades.MostrarMensagemErro(e);
                 }

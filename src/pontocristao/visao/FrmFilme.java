@@ -234,7 +234,7 @@ public class FrmFilme extends javax.swing.JDialog {
 
     private void BtnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNovoActionPerformed
         FrmCadastrarFilme frm = FrmCadastrarFilme.Mostrar(frame, 0);
-        
+
         if (frm.getModeloAtualizado()) {
             Filme filme = frm.getFilme();
             AdicionarLinha(filme);

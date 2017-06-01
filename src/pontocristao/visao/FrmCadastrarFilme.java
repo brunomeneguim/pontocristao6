@@ -35,7 +35,7 @@ public class FrmCadastrarFilme extends javax.swing.JDialog {
         txtCodigo.setEnabled(false);
         jcDataCadastro.setEnabled(false);
         txtCodigoBarra.setEnabled(false);
-        
+
         txtNomeProduto.requestFocus();
 
         InicializarControle(id);
@@ -50,21 +50,21 @@ public class FrmCadastrarFilme extends javax.swing.JDialog {
 
     private void InicializarControle(long id) {
         controle = new ControleFilme();
-        
+
         listaFornecedores = controle.RetornarFornecedores();
         listaTiposFilme = controle.RetornarTiposFilme();
-        
+
         for (Fornecedor fornecedor : listaFornecedores) {
             jComboFornecedor.addItem(RetornarDescricaoFornecedor(fornecedor));
         }
-        
+
         for (TipoFilme tipoFilme : listaTiposFilme) {
             jComboTipoFilme.addItem(RetornarDescricaoTipoFilme(tipoFilme));
         }
-        
+
         jComboFornecedor.setSelectedIndex(-1);
         jComboTipoFilme.setSelectedIndex(-1);
-        
+
         if (id > 0) {
             Exception erro = controle.RecuperarFilme(id);
 
@@ -75,11 +75,11 @@ public class FrmCadastrarFilme extends javax.swing.JDialog {
             }
         }
     }
-    
+
     private String RetornarDescricaoFornecedor(Fornecedor fornecedor) {
         return fornecedor.getId() + " - " + fornecedor.getNomeFantasia() + " - " + fornecedor.getCnpj();
     }
-    
+
     private String RetornarDescricaoTipoFilme(TipoFilme tipoFilme) {
         return tipoFilme.getId() + " - " + tipoFilme.getDescricao();
     }
@@ -99,18 +99,18 @@ public class FrmCadastrarFilme extends javax.swing.JDialog {
     private void AtualizarModelo() {
         controle.getFilme().setCodigoBarra(txtCodigoBarra.getText());
         controle.getFilme().setNome(txtNomeProduto.getText());
-        controle.getFilme().setValorVenda((Double)jspValor.getValue());
-        controle.getFilme().setQuantidade((Integer)jspQuantidade.getValue());
+        controle.getFilme().setValorVenda((Double) jspValor.getValue());
+        controle.getFilme().setQuantidade((Integer) jspQuantidade.getValue());
         controle.getFilme().setLancamento(chkLancamento.isSelected());
         String descricaoFornecedor = jComboFornecedor.getSelectedItem().toString();
         String descricaoTipoProduto = jComboTipoFilme.getSelectedItem().toString();
-        
+
         for (Fornecedor fornecedor : listaFornecedores) {
             if (RetornarDescricaoFornecedor(fornecedor).equals(descricaoFornecedor)) {
                 controle.getFilme().setFornecedor(fornecedor);
             }
         }
-        
+
         for (TipoFilme tipoFilme : listaTiposFilme) {
             if (RetornarDescricaoTipoFilme(tipoFilme).equals(descricaoTipoProduto)) {
                 controle.getFilme().setTipoFilme(tipoFilme);

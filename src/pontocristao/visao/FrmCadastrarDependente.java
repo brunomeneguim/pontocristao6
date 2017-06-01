@@ -67,11 +67,11 @@ public class FrmCadastrarDependente extends javax.swing.JDialog {
         if (txtNome.getText().equals("")
                 || Utilidades.getValorSemMascara(txtRg) == null
                 || Utilidades.getValorSemMascara(txtCpf) == null) {
-            
+
             retorno = false;
             JOptionPane.showMessageDialog(null, "Todos os campos com o título em negrito, devem estar preenchidos.");
         }
-        
+
         return retorno;
     }
 
@@ -189,7 +189,7 @@ public class FrmCadastrarDependente extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarActionPerformed
-       Object[] botoes = {"Sim", "Não"};
+        Object[] botoes = {"Sim", "Não"};
         int resposta = JOptionPane.showOptionDialog(null,
                 "Deseja cancelar o cadastro de Dependentes? ",
                 "Confirmação",

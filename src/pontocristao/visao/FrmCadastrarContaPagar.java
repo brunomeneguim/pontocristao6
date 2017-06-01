@@ -34,7 +34,7 @@ public class FrmCadastrarContaPagar extends javax.swing.JDialog {
 
         jcData.setEnabled(false);
         jcData.setDate(new Date());
-        
+
         jcDataVencimento.requestFocus();
 
         InicializarControle(id);
@@ -49,15 +49,15 @@ public class FrmCadastrarContaPagar extends javax.swing.JDialog {
 
     private void InicializarControle(long id) {
         controle = new ControleContaPagar();
-        
+
         listaTiposContaPagar = controle.RetornarTiposContaPagar();
-        
+
         for (TipoContaPagar tipoContaPagar : listaTiposContaPagar) {
             jComboTipo.addItem(RetornarDescricaoTipoContaPagar(tipoContaPagar));
         }
-        
+
         jComboTipo.setSelectedIndex(-1);
-        
+
         if (id > 0) {
             Exception erro = controle.RecuperarContaPagar(id);
 
@@ -68,7 +68,7 @@ public class FrmCadastrarContaPagar extends javax.swing.JDialog {
             }
         }
     }
-    
+
     private String RetornarDescricaoTipoContaPagar(TipoContaPagar tipoContaPagar) {
         return tipoContaPagar.getId() + " - " + tipoContaPagar.getDescricao();
     }
@@ -86,7 +86,7 @@ public class FrmCadastrarContaPagar extends javax.swing.JDialog {
         controle.getContaPagar().setDataVencimento(jcDataVencimento.getDate());
         controle.getContaPagar().setDescricao(txtDescricao.getText());
         controle.getContaPagar().setTipoContaPagar(listaTiposContaPagar.get(jComboTipo.getSelectedIndex()));
-        controle.getContaPagar().setValor((Double)jspValor.getValue());
+        controle.getContaPagar().setValor((Double) jspValor.getValue());
     }
 
     public Boolean ValidaCampos() {
@@ -100,7 +100,7 @@ public class FrmCadastrarContaPagar extends javax.swing.JDialog {
             retorno = false;
             JOptionPane.showMessageDialog(null, "Todos os campos em negrito devem estar preenchidos.");
         }
-        
+
         return retorno;
     }
 

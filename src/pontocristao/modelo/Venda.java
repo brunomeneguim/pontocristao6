@@ -1,4 +1,4 @@
- package pontocristao.modelo;
+package pontocristao.modelo;
 
 import java.util.*;
 import javax.persistence.*;

@@ -1,18 +1,10 @@
 package pontocristao.visao;
 
 import java.awt.*;
-import java.text.NumberFormat;
-import java.time.LocalDateTime;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.NumberFormatter;
 import org.hibernate.Transaction;
 import pontocristao.controle.*;
 import pontocristao.modelo.*;
@@ -21,7 +13,7 @@ import pontocristao.util.Utilidades;
 
 /**
  *
- * @author Marcondes teste
+ * @author Marcondes
  */
 public class FrmCadastrarVenda extends javax.swing.JDialog {
 
@@ -451,11 +443,11 @@ public class FrmCadastrarVenda extends javax.swing.JDialog {
             Utilidades.MostrarMensagemErro(new Exception("Você não selecionou nenhum filme para adicionar."));
         } else {
             Produto produto = listaProdutos.get(cbxProduto.getSelectedIndex());
-            
+
             ItemVenda item = new ItemVenda();
             item.setProduto(produto);
             item.setVenda(getVenda());
-            item.setQuantidade((Integer)jspQuantidade.getValue());
+            item.setQuantidade((Integer) jspQuantidade.getValue());
             item.setValorUnitario(produto.getValorVenda());
 
             getVenda().getItensVenda().add(item);

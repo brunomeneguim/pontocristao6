@@ -13,7 +13,7 @@ public abstract class MovimentacaoCaixaEntrada extends MovimentacaoCaixa {
 
     @Column(nullable = false)
     private Date dataFaturar;
-    
+
     @Column(nullable = false)
     private Boolean faturado;
 

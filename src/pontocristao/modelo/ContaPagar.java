@@ -21,7 +21,7 @@ public class ContaPagar extends ModeloBase {
 
     @Column(nullable = false)
     private String descricao;
-    
+
     @Column(nullable = false)
     private Boolean pago;
 

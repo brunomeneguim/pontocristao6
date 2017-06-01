@@ -271,7 +271,7 @@ public class FrmCadastrarFornecedor extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnConfirmarActionPerformed
 
     private void BtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarActionPerformed
-       Object[] botoes = {"Sim", "Não"};
+        Object[] botoes = {"Sim", "Não"};
         int resposta = JOptionPane.showOptionDialog(null,
                 "Deseja cancelar o cadastro de Fornecedor? ",
                 "Confirmação",
