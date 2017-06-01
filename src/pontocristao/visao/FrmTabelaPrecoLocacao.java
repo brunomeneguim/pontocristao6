@@ -191,7 +191,15 @@ public class FrmTabelaPrecoLocacao extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnConfirmarActionPerformed
 
     private void BtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarActionPerformed
-        this.dispose();
+        Object[] botoes = {"Sim", "Não"};
+        int resposta = JOptionPane.showOptionDialog(null,
+                "Deseja cancelar o cadastro de valores? ",
+                "Confirmação",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null,
+                botoes, botoes[0]);
+        if (resposta == 0) {
+            this.dispose();
+        }
     }//GEN-LAST:event_BtnCancelarActionPerformed
 
     /**
