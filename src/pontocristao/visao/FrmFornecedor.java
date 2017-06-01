@@ -286,7 +286,7 @@ public class FrmFornecedor extends javax.swing.JDialog {
     private void BtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnExcluirActionPerformed
         if (listaFornecedores != null) {
 
-            Boolean podeExcluir = Utilidades.MostrarMensagemPergunta("Confirmação", "Tem certeza que deseja excluir o funcionário?", false);
+            Boolean podeExcluir = Utilidades.MostrarMensagemPergunta("Confirmação", "Tem certeza que deseja excluir o fornecedor?", false);
 
             if (podeExcluir) {
                 int linhaSelecionada = jTableFornecedor.getSelectedRow();
