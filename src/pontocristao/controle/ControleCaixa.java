@@ -12,7 +12,6 @@ import java.util.Date;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import pontocristao.modelo.Caixa;
 import pontocristao.modelo.MovimentacaoCaixa;
 import pontocristao.modelo.MovimentacaoCaixaContaPagar;
@@ -22,20 +21,19 @@ import pontocristao.modelo.MovimentacaoCaixaLocacao;
 import pontocristao.modelo.MovimentacaoCaixaRetirada;
 import pontocristao.modelo.MovimentacaoCaixaSaida;
 import pontocristao.modelo.MovimentacaoCaixaVenda;
-import pontocristao.util.HibernateUtil;
 
 /**
  *
- * @author Marco
+ * @author Marcondes
  */
 public class ControleCaixa extends ControleBase {
-    
+
     public ControleCaixa(Session sessao) {
         if (sessao != null) {
             setSessao(sessao);
         }
     }
-    
+
     public ControleCaixa() {
     }
 
@@ -49,42 +47,42 @@ public class ControleCaixa extends ControleBase {
 
             Caixa caixa = new Caixa();
             caixa.setSaldo(0d);
-           
+
             getSessao().save(caixa);
-            
+
             return RetornarCaixa();
         } else {
             return caixas.get(caixas.size() - 1);
         }
     }
-    
-    public List<MovimentacaoCaixa> RetornarMovimentacoesCaixa(){
+
+    public List<MovimentacaoCaixa> RetornarMovimentacoesCaixa() {
         String sqlMovimentacaoCaixaContaPagar = "SELECT * FROM MovimentacaoCaixaContaPagar JOIN MovimentacaoCaixaSaida ON MovimentacaoCaixaContaPagar.id = MovimentacaoCaixaSaida.id JOIN MovimentacaoCaixa ON MovimentacaoCaixa.id = MovimentacaoCaixaSaida.Id WHERE MovimentacaoCaixa.excluido = false";
         String sqlMovimentacaoCaixaDeposito = "SELECT * FROM MovimentacaoCaixaDeposito JOIN MovimentacaoCaixaEntrada ON MovimentacaoCaixaDeposito.id = MovimentacaoCaixaEntrada.id JOIN MovimentacaoCaixa ON MovimentacaoCaixa.id = MovimentacaoCaixaEntrada.Id WHERE MovimentacaoCaixa.excluido = false";
         String sqlMovimentacaoCaixaLocacao = "SELECT * FROM MovimentacaoCaixaLocacao JOIN MovimentacaoCaixaEntrada ON MovimentacaoCaixaLocacao.id = MovimentacaoCaixaEntrada.id JOIN MovimentacaoCaixa ON MovimentacaoCaixa.id = MovimentacaoCaixaEntrada.Id WHERE MovimentacaoCaixa.excluido = false";
         String sqlMovimentacaoCaixaRetirada = "SELECT * FROM MovimentacaoCaixaRetirada JOIN MovimentacaoCaixaSaida ON MovimentacaoCaixaRetirada.id = MovimentacaoCaixaSaida.id JOIN MovimentacaoCaixa ON MovimentacaoCaixa.id = MovimentacaoCaixaSaida.Id WHERE MovimentacaoCaixa.excluido = false";
         String sqlMovimentacaoCaixaVenda = "SELECT * FROM MovimentacaoCaixaVenda JOIN MovimentacaoCaixaEntrada ON MovimentacaoCaixaVenda.id = MovimentacaoCaixaEntrada.id JOIN MovimentacaoCaixa ON MovimentacaoCaixa.id = MovimentacaoCaixaEntrada.Id WHERE MovimentacaoCaixa.excluido = false";
-       
+
         Query qMovimentacaoCaixaContaPagar = getSessao().createSQLQuery(sqlMovimentacaoCaixaContaPagar).addEntity(MovimentacaoCaixaContaPagar.class);
         Query qMovimentacaoCaixaDeposito = getSessao().createSQLQuery(sqlMovimentacaoCaixaDeposito).addEntity(MovimentacaoCaixaDeposito.class);
         Query qMovimentacaoCaixaLocacao = getSessao().createSQLQuery(sqlMovimentacaoCaixaLocacao).addEntity(MovimentacaoCaixaLocacao.class);
         Query qMovimentacaoCaixaRetirada = getSessao().createSQLQuery(sqlMovimentacaoCaixaRetirada).addEntity(MovimentacaoCaixaRetirada.class);
         Query qMovimentacaoCaixaVenda = getSessao().createSQLQuery(sqlMovimentacaoCaixaVenda).addEntity(MovimentacaoCaixaVenda.class);
-        
+
         List<MovimentacaoCaixaContaPagar> movimentacoesCaixaContaPagar = qMovimentacaoCaixaContaPagar.list();
         List<MovimentacaoCaixaDeposito> movimentacoesCaixaDeposito = qMovimentacaoCaixaDeposito.list();
         List<MovimentacaoCaixaLocacao> movimentacoesCaixaLocacao = qMovimentacaoCaixaLocacao.list();
         List<MovimentacaoCaixaRetirada> movimentacoesCaixaRetirada = qMovimentacaoCaixaRetirada.list();
         List<MovimentacaoCaixaVenda> movimentacoesCaixaVenda = qMovimentacaoCaixaVenda.list();
-        
+
         ArrayList<MovimentacaoCaixa> movimentacoes = new ArrayList<MovimentacaoCaixa>();
-       
+
         movimentacoes.addAll(movimentacoesCaixaContaPagar);
         movimentacoes.addAll(movimentacoesCaixaDeposito);
         movimentacoes.addAll(movimentacoesCaixaLocacao);
         movimentacoes.addAll(movimentacoesCaixaRetirada);
         movimentacoes.addAll(movimentacoesCaixaVenda);
-        
+
         Collections.sort(movimentacoes, new Comparator<MovimentacaoCaixa>() {
             @Override
             public int compare(MovimentacaoCaixa c2, MovimentacaoCaixa c1) {
@@ -96,7 +94,7 @@ public class ControleCaixa extends ControleBase {
 
             }
         });
-        
+
         return movimentacoes;
     }
 
@@ -105,29 +103,23 @@ public class ControleCaixa extends ControleBase {
         movimentacao.setCaixa(caixa);
         caixa.getMovimentacoes().add(movimentacao);
 
-        if(movimentacao instanceof MovimentacaoCaixaEntrada)
-        {
+        if (movimentacao instanceof MovimentacaoCaixaEntrada) {
             caixa.setSaldo(caixa.getSaldo() + movimentacao.getValor());
-            
-            MovimentacaoCaixaEntrada mov = (MovimentacaoCaixaEntrada)movimentacao;
+
+            MovimentacaoCaixaEntrada mov = (MovimentacaoCaixaEntrada) movimentacao;
             mov.setFaturado(true);
             mov.setDataFaturar(new Date());
-        }
-        else if(movimentacao instanceof MovimentacaoCaixaSaida)
-        {
+        } else if (movimentacao instanceof MovimentacaoCaixaSaida) {
             caixa.setSaldo(caixa.getSaldo() - movimentacao.getValor());
-        }
-        else
-        {
+        } else {
             throw new Exception("Tipo desconhecido.");
         }
-        
+
         Session s = getSessao();
 
         s.saveOrUpdate(movimentacao);
         s.saveOrUpdate(caixa);
 
     }
-   
 
 }

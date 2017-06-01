@@ -1,6 +1,5 @@
 package pontocristao.controle;
 
-import java.util.Date;
 import java.util.List;
 import org.hibernate.*;
 import pontocristao.modelo.*;
@@ -83,13 +82,13 @@ public class ControleFornecedor extends ControleBase {
             if (resultados.size() == 1) {
                 Fornecedor fornecedor = (Fornecedor) resultados.get(0);
                 fornecedor.setExcluido(true);
-                
+
                 Transaction transacao = s.getTransaction();
 
                 transacao.begin();
                 s.save(fornecedor);
                 transacao.commit();
-                
+
             } else {
                 throw new Exception("Não foi possível encontrar o fornecedor com o id " + id);
             }

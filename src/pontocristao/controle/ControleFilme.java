@@ -50,13 +50,13 @@ public class ControleFilme extends ControleBase {
         Query q = this.getSessao().createSQLQuery(sql).addEntity(Filme.class);
         return (List<Filme>) q.list();
     }
-    
-    public  List<Fornecedor> RetornarFornecedores() {
+
+    public List<Fornecedor> RetornarFornecedores() {
         String sql = "SELECT * FROM Fornecedor WHERE excluido = false";
         Query q = this.getSessao().createSQLQuery(sql).addEntity(Fornecedor.class);
         return (List<Fornecedor>) q.list();
     }
-    
+
     public List<TipoFilme> RetornarTiposFilme() {
         String sql = "SELECT * FROM TipoFilme WHERE excluido = false";
         Query q = this.getSessao().createSQLQuery(sql).addEntity(TipoFilme.class);

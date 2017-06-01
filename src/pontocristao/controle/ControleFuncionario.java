@@ -84,13 +84,13 @@ public class ControleFuncionario extends ControleBase {
             if (resultados.size() == 1) {
                 Funcionario funcionario = (Funcionario) resultados.get(0);
                 funcionario.setExcluido(true);
-                
+
                 Transaction transacao = s.getTransaction();
 
                 transacao.begin();
                 s.save(funcionario);
                 transacao.commit();
-                
+
             } else {
                 throw new Exception("Não foi possível encontrar o funcionário com o id " + id);
             }

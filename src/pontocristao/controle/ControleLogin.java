@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pontocristao.controle;
 
 import java.util.Date;
@@ -14,27 +9,24 @@ import pontocristao.util.Utilidades;
 
 /**
  *
- * @author Marco
+ * @author Marcondes
  */
-public class ControleLogin extends ControleBase{
-    
-    public Funcionario FazerLogin(String login, String senha)
-    {
+public class ControleLogin extends ControleBase {
+
+    public Funcionario FazerLogin(String login, String senha) {
         Session s = getSessao();
-        String sql = "SELECT * FROM Funcionario WHERE excluido = false AND login = '" + login +"' AND senha = '" + senha + "'";
+        String sql = "SELECT * FROM Funcionario WHERE excluido = false AND login = '" + login + "' AND senha = '" + senha + "'";
         Query q = s.createSQLQuery(sql).addEntity(Funcionario.class);
-        
+
         List<Funcionario> funcionarios = q.list();
         Funcionario funcionarioLogado = null;
-        
-        if(login.equals("admin") && senha.equals("admin") && funcionarios.isEmpty())
-        {
-            if(funcionarios.size() == 0)
-            {
+
+        if (login.equals("admin") && senha.equals("admin") && funcionarios.isEmpty()) {
+            if (funcionarios.size() == 0) {
                 ControleFuncionario controleFuncionario = new ControleFuncionario();
-                
+
                 funcionarioLogado = controleFuncionario.getFuncionario();
-                
+
                 funcionarioLogado.setCarteiraTrabalho("000000000");
                 funcionarioLogado.setCelular("0000000000");
                 funcionarioLogado.setCpf("00000000000");
@@ -42,50 +34,44 @@ public class ControleLogin extends ControleBase{
                 funcionarioLogado.setDataCadastro(new Date());
                 funcionarioLogado.setDataNascimento(new Date());
                 funcionarioLogado.setEmail("admin@admin.com.br");
-                
+
                 Endereco end = new Endereco();
-                
+
                 end.setBairro("admin");
                 end.setCep("00000000");
                 end.setCidade("admin");
                 end.setEstado("admin");
                 end.setNumero("000");
                 end.setRua("admin");
-                
+
                 funcionarioLogado.setEndereco(end);
-                
+
                 funcionarioLogado.setLogin("admin");
                 funcionarioLogado.setNome("Administrador");
                 funcionarioLogado.setRg("00000000");
                 funcionarioLogado.setSenha("admin");
                 funcionarioLogado.setSexo(Sexo.Masculino);
                 funcionarioLogado.setTelefoneResidencial("0000000000");
-                
+
                 Exception erro = controleFuncionario.Salvar();
-                
-                if (erro != null)
-                {
+
+                if (erro != null) {
                     Utilidades.MostrarMensagemErro(erro);
                 }
             }
-            
-        }
-        else
-        {
-            if(funcionarios.size() > 0)
-            {
+
+        } else {
+            if (funcionarios.size() > 0) {
                 funcionarioLogado = funcionarios.get(0);
-            }
-            else
-            {
+            } else {
                 Utilidades.MostrarMensagem("Falha no login", "Nome de usuário ou senha incorretos.");
             }
         }
-        
+
         setModelo(funcionarioLogado);
-        
+
         ControleSistema.FuncionarioLogado = funcionarioLogado;
-        
+
         return funcionarioLogado;
     }
 }

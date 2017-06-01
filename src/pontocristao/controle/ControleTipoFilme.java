@@ -1,6 +1,5 @@
 package pontocristao.controle;
 
-import java.util.Date;
 import java.util.List;
 import org.hibernate.*;
 import pontocristao.modelo.*;
@@ -83,13 +82,13 @@ public class ControleTipoFilme extends ControleBase {
             if (resultados.size() == 1) {
                 TipoFilme tipoFilme = (TipoFilme) resultados.get(0);
                 tipoFilme.setExcluido(true);
-                
+
                 Transaction transacao = s.getTransaction();
 
                 transacao.begin();
                 s.save(tipoFilme);
                 transacao.commit();
-                
+
             } else {
                 throw new Exception("Não foi possível encontrar o tipo fe filme com o id " + id);
             }

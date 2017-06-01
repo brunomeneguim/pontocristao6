@@ -50,8 +50,8 @@ public class ControleContaPagar extends ControleBase {
         Query q = this.getSessao().createSQLQuery(sql).addEntity(ContaPagar.class);
         return (List<ContaPagar>) q.list();
     }
-    
-    public  List<TipoContaPagar> RetornarTiposContaPagar() {
+
+    public List<TipoContaPagar> RetornarTiposContaPagar() {
         String sql = "SELECT * FROM TipoContaPagar WHERE excluido = false";
         Query q = this.getSessao().createSQLQuery(sql).addEntity(TipoContaPagar.class);
         return (List<TipoContaPagar>) q.list();
@@ -105,7 +105,7 @@ public class ControleContaPagar extends ControleBase {
             return erro;
         }
     }
-    
+
     public Exception PagarConta(long id) {
         String sql = "SELECT * FROM ContaPagar WHERE id = " + id;
         Exception erro = null;
@@ -118,13 +118,13 @@ public class ControleContaPagar extends ControleBase {
             if (resultados.size() == 1) {
                 ContaPagar contaPagar = (ContaPagar) resultados.get(0);
                 contaPagar.setPago(true);
-                
+
                 MovimentacaoCaixaContaPagar movimentacao = new MovimentacaoCaixaContaPagar();
                 movimentacao.setContaPagar(contaPagar);
                 movimentacao.setData(new Date());
                 movimentacao.setValor(contaPagar.getValor());
                 movimentacao.setFuncionario(ControleSistema.getFuncionarioLogado(s));
-                
+
                 ControleCaixa controleCaixa = new ControleCaixa(s);
                 controleCaixa.AdicionarMovimentacao(movimentacao);
 

@@ -15,19 +15,16 @@ public abstract class ControleBase {
     public Session getSessao() {
         return sessao;
     }
-    
-    public void setSessao(Session novaSessao)
-    {
-        if(sessao != null)
-        {
-            if(sessao.isOpen())
-            {
+
+    public void setSessao(Session novaSessao) {
+        if (sessao != null) {
+            if (sessao.isOpen()) {
                 sessao.close();
             }
         }
         sessao = novaSessao;
     }
-    
+
     private ModeloBase modelo;
 
     public ModeloBase getModelo() {
@@ -37,35 +34,34 @@ public abstract class ControleBase {
     public void setModelo(ModeloBase modelo) {
         this.modelo = modelo;
     }
-    
-    public ControleBase()
-    {
-        try{
+
+    public ControleBase() {
+        try {
             sessao = HibernateUtil.getSessionFactory().openSession();
-        } catch(Exception e){
+        } catch (Exception e) {
             Exception erro = e;
         }
     }
-    
+
     public Exception Salvar(ModeloBase modelo) {
         Exception erro = null;
-        
+
         try {
-            
+
             Transaction transacao = sessao.getTransaction();
             transacao.begin();
-            
+
             sessao.saveOrUpdate(modelo);
-            
+
             transacao.commit();
-            
+
         } catch (Exception e) {
             erro = e;
         } finally {
             return erro;
         }
     }
-    
+
     public void Dispose() {
         if (sessao != null) {
             if (sessao.isOpen()) {

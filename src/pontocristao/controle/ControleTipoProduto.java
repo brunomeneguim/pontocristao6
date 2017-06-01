@@ -1,6 +1,5 @@
 package pontocristao.controle;
 
-import java.util.Date;
 import java.util.List;
 import org.hibernate.*;
 import pontocristao.modelo.*;
@@ -83,13 +82,13 @@ public class ControleTipoProduto extends ControleBase {
             if (resultados.size() == 1) {
                 TipoProduto tipoProduto = (TipoProduto) resultados.get(0);
                 tipoProduto.setExcluido(true);
-                
+
                 Transaction transacao = s.getTransaction();
 
                 transacao.begin();
                 s.save(tipoProduto);
                 transacao.commit();
-                
+
             } else {
                 throw new Exception("Não foi possível encontrar o tipo de produto com o id " + id);
             }

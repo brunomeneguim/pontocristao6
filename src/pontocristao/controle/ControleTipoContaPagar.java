@@ -1,6 +1,5 @@
 package pontocristao.controle;
 
-import java.util.Date;
 import java.util.List;
 import org.hibernate.*;
 import pontocristao.modelo.*;
@@ -83,13 +82,13 @@ public class ControleTipoContaPagar extends ControleBase {
             if (resultados.size() == 1) {
                 TipoContaPagar tipoContaPagar = (TipoContaPagar) resultados.get(0);
                 tipoContaPagar.setExcluido(true);
-                
+
                 Transaction transacao = s.getTransaction();
 
                 transacao.begin();
                 s.save(tipoContaPagar);
                 transacao.commit();
-                
+
             } else {
                 throw new Exception("Não foi possível encontrar o tipo de conta a pagar com o id " + id);
             }

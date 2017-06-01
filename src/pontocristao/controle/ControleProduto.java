@@ -50,13 +50,13 @@ public class ControleProduto extends ControleBase {
         Query q = this.getSessao().createSQLQuery(sql).addEntity(Produto.class);
         return (List<Produto>) q.list();
     }
-    
-    public  List<Fornecedor> RetornarFornecedores() {
+
+    public List<Fornecedor> RetornarFornecedores() {
         String sql = "SELECT * FROM Fornecedor WHERE excluido = false";
         Query q = this.getSessao().createSQLQuery(sql).addEntity(Fornecedor.class);
         return (List<Fornecedor>) q.list();
     }
-    
+
     public List<TipoProduto> RetornarTiposProduto() {
         String sql = "SELECT * FROM TipoProduto WHERE excluido = false";
         Query q = this.getSessao().createSQLQuery(sql).addEntity(TipoProduto.class);

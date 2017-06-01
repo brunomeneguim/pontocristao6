@@ -116,7 +116,7 @@ public class ControleCliente extends ControleBase {
             for (Dependente dependente : getCliente().getDependentes()) {
                 s.saveOrUpdate(dependente);
             }
-            
+
             transacao.commit();
 
         } catch (Exception e) {
