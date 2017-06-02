@@ -93,7 +93,7 @@ public class FrmFuncionario extends javax.swing.JDialog {
             funcionario.getTelefoneResidencial(),
             funcionario.getCelular(),
             funcionario.getEmail(),
-            funcionario.getDataNascimento()
+            Utilidades.RetornarDataFormatada(funcionario.getDataNascimento())
         };
     }
 

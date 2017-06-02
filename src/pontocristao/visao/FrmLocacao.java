@@ -105,7 +105,7 @@ public class FrmLocacao extends javax.swing.JDialog {
 
     private Object[] RetornarNovaLinha(Locacao locacao) {
         return new Object[]{
-            locacao.getData(),
+            Utilidades.RetornarDataFormatada(locacao.getData()),
             locacao.getCliente().getNome(),
             locacao.getValorTotal(),
             locacao.getPago(),

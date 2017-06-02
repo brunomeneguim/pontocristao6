@@ -97,10 +97,10 @@ public class FrmVenda extends javax.swing.JDialog {
 
     private Object[] RetornarNovaLinha(Venda venda) {
         return new Object[]{
-            venda.getData(),
+            Utilidades.RetornarDataFormatada(venda.getData()),
             venda.getCliente().getNome(),
-            venda.getValorTotal(),
-            venda.getPago()
+            Utilidades.RetornarValorMonetarioFormatado(venda.getValorTotal()),
+            (venda.getPago()) ? "Pago" : "Não pago"
         };
     }
 

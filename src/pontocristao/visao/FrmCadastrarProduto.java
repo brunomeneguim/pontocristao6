@@ -1,7 +1,10 @@
 package pontocristao.visao;
 
 import java.awt.*;
+import java.text.NumberFormat;
+import java.util.Locale;
 import javax.swing.JOptionPane;
+import javax.swing.text.NumberFormatter;
 import pontocristao.controle.*;
 import pontocristao.modelo.*;
 import pontocristao.util.Utilidades;
@@ -216,6 +219,7 @@ public class FrmCadastrarProduto extends javax.swing.JDialog {
         jspQuantidade.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
         jspValor.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 0.1d));
+        jspValor.setEditor(new javax.swing.JSpinner.NumberEditor(jspValor, "R$ ###,###.##"));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -1,5 +1,9 @@
 package pontocristao.util;
 
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.text.*;
@@ -55,5 +59,13 @@ public class Utilidades {
         Object[] botoes = {"Ok"};
         JOptionPane.showOptionDialog(null, texto, titulo, JOptionPane.DEFAULT_OPTION,
                 JOptionPane.ERROR_MESSAGE, null, botoes, botoes[0]);
+    }
+    
+    public static String RetornarDataFormatada(Date data) {
+        return new SimpleDateFormat("dd-MM-yyyy").format(data); 
+    }
+    
+    public static String RetornarValorMonetarioFormatado(double valor) {
+        return NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(valor);
     }
 }

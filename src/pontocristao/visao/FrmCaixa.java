@@ -100,7 +100,7 @@ public class FrmCaixa extends javax.swing.JDialog {
 
         return new Object[]{
             operacao,
-            movimentacao.getData(),
+            Utilidades.RetornarDataFormatada(movimentacao.getData()),
             movimentacao.getValor(),
             tipo,
             descricao

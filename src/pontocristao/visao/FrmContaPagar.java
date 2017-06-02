@@ -100,7 +100,7 @@ public class FrmContaPagar extends javax.swing.JDialog {
         return new Object[]{
             contaPagar.getDescricao(),
             contaPagar.getValor(),
-            contaPagar.getDataVencimento(),
+            Utilidades.RetornarDataFormatada(contaPagar.getDataVencimento()),
             contaPagar.getPago(),
             contaPagar.getTipoContaPagar().getDescricao()
         };
