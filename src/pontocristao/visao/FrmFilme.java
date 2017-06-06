@@ -89,7 +89,7 @@ public class FrmFilme extends javax.swing.JDialog {
     private Object[] RetornarNovaLinha(Filme filme) {
         return new Object[]{
             filme.getNome(),
-            filme.getValorVenda(),
+            Utilidades.RetornarValorMonetarioFormatado(filme.getValorVenda()),
             filme.getQuantidade(),
             filme.getFornecedor().getNomeFantasia(),
             filme.getTipoFilme().getDescricao()

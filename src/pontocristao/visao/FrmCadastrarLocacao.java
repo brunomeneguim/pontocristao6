@@ -236,6 +236,7 @@ public class FrmCadastrarLocacao extends javax.swing.JDialog {
         setTitle("Cadastro de Locação");
 
         jspValor.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 0.1d));
+        jspValor.setEditor(new javax.swing.JSpinner.NumberEditor(jspValor, "R$ ###,###.##"));
 
         BtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pontocristao/icones/BtnCancelar.png"))); // NOI18N
         BtnCancelar.setText("Cancelar");

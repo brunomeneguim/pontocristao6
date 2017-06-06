@@ -127,6 +127,7 @@ public class FrmCaixaRetirada extends javax.swing.JDialog {
         lDataRetirada.setText("Data da Retirada*");
 
         jspValor.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 0.1d));
+        jspValor.setEditor(new javax.swing.JSpinner.NumberEditor(jspValor, "R$ ###,###.##"));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

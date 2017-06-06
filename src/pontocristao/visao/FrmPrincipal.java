@@ -4,6 +4,7 @@ import java.awt.Desktop;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -468,7 +469,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
             connectionProps.put("password", "root");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pontocristao", connectionProps);
 
-            JasperPrint jp = JasperFillManager.fillReport(relatorio, new HashMap(), conn);
+            HashMap parametros = new HashMap();
+            
+            DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+            parametros.put("DATA_INICIO", "2016-01-29");
+            parametros.put("DATA_FIM", "2018-01-29");
+
+            JasperPrint jp = JasperFillManager.fillReport(relatorio, parametros, conn);
 
             JRExporter exporter = new JRPdfExporter();
             exporter.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, arquivo);

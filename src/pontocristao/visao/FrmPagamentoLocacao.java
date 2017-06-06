@@ -153,6 +153,7 @@ public class FrmPagamentoLocacao extends javax.swing.JDialog {
         lTipoPagamento.setText("Tipo de Pagamento");
 
         jspValor.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        jspValor.setEditor(new javax.swing.JSpinner.NumberEditor(jspValor, "R$ ###,###.##"));
         jspValor.setOpaque(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

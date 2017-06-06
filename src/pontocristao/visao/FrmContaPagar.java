@@ -99,9 +99,9 @@ public class FrmContaPagar extends javax.swing.JDialog {
     private Object[] RetornarNovaLinha(ContaPagar contaPagar) {
         return new Object[]{
             contaPagar.getDescricao(),
-            contaPagar.getValor(),
+            Utilidades.RetornarValorMonetarioFormatado(contaPagar.getValor()),
             Utilidades.RetornarDataFormatada(contaPagar.getDataVencimento()),
-            contaPagar.getPago(),
+            (contaPagar.getPago() ? "Pago" : "Não pago"),
             contaPagar.getTipoContaPagar().getDescricao()
         };
     }

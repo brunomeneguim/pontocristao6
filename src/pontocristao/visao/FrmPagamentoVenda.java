@@ -126,6 +126,7 @@ public class FrmPagamentoVenda extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jspValor.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        jspValor.setEditor(new javax.swing.JSpinner.NumberEditor(jspValor, "R$ ###,###.##"));
         jspValor.setOpaque(false);
 
         lDataPagamento.setText("Data do Pagamento");

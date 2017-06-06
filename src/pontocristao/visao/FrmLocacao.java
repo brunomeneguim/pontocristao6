@@ -107,9 +107,9 @@ public class FrmLocacao extends javax.swing.JDialog {
         return new Object[]{
             Utilidades.RetornarDataFormatada(locacao.getData()),
             locacao.getCliente().getNome(),
-            locacao.getValorTotal(),
-            locacao.getPago(),
-            locacao.getDevolvido()
+            Utilidades.RetornarValorMonetarioFormatado(locacao.getValorTotal()),
+            (locacao.getPago()) ? "Pago" : "Não pago",
+            (locacao.getDevolvido()) ? "Devolvido" : "Não devolvido"
         };
     }
 

@@ -89,7 +89,7 @@ public class FrmProduto extends javax.swing.JDialog {
     private Object[] RetornarNovaLinha(Produto produto) {
         return new Object[]{
             produto.getNome(),
-            produto.getValorVenda(),
+            Utilidades.RetornarValorMonetarioFormatado(produto.getValorVenda()),
             produto.getQuantidade(),
             produto.getFornecedor().getNomeFantasia(),
             produto.getTipoProduto().getDescricao()

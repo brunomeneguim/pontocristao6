@@ -32,13 +32,8 @@
                           <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtCodigo" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                                      <Component id="lCodigoProduto" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtCodigoBarra" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                                      <Component id="lCodigoBarra" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lCodigoProduto" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtCodigo" min="-2" pref="318" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -94,15 +89,11 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lCodigoProduto" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lCodigoBarra" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lDataCadastro" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                      <Component id="txtCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtCodigoBarra" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="txtCodigo" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jcDataCadastro" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -155,6 +146,9 @@
       <Properties>
         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
           <SpinnerModel initial="0.0" minimum="0.0" numberType="java.lang.Double" stepSize="0.1" type="number"/>
+        </Property>
+        <Property name="editor" type="javax.swing.JComponent" editor="org.netbeans.modules.form.editors.SpinnerEditorEditor">
+          <SpinnerEditor format="R$ ###,###.##" type="3"/>
         </Property>
       </Properties>
     </Component>
@@ -256,13 +250,6 @@
     <Component class="javax.swing.JLabel" name="lDataCadastro">
       <Properties>
         <Property name="text" type="java.lang.String" value="Data de Cadastro"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JFormattedTextField" name="txtCodigoBarra">
-    </Component>
-    <Component class="javax.swing.JLabel" name="lCodigoBarra">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="C&#xf3;digo de Barras"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="chkLancamento">

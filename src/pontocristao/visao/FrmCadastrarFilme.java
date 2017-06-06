@@ -34,7 +34,6 @@ public class FrmCadastrarFilme extends javax.swing.JDialog {
 
         txtCodigo.setEnabled(false);
         jcDataCadastro.setEnabled(false);
-        txtCodigoBarra.setEnabled(false);
 
         txtNomeProduto.requestFocus();
 
@@ -86,7 +85,6 @@ public class FrmCadastrarFilme extends javax.swing.JDialog {
 
     private void AtualizarCampos() {
         txtCodigo.setText(String.valueOf(controle.getFilme().getId()));
-        txtCodigoBarra.setText(controle.getFilme().getCodigoBarra());
         jcDataCadastro.setDate(controle.getFilme().getDataCadastro());
         txtNomeProduto.setText(controle.getFilme().getNome());
         jspValor.setValue(controle.getFilme().getValorVenda());
@@ -97,7 +95,6 @@ public class FrmCadastrarFilme extends javax.swing.JDialog {
     }
 
     private void AtualizarModelo() {
-        controle.getFilme().setCodigoBarra(txtCodigoBarra.getText());
         controle.getFilme().setNome(txtNomeProduto.getText());
         controle.getFilme().setValorVenda((Double) jspValor.getValue());
         controle.getFilme().setQuantidade((Integer) jspQuantidade.getValue());
@@ -167,8 +164,6 @@ public class FrmCadastrarFilme extends javax.swing.JDialog {
         jcDataCadastro = new com.toedter.calendar.JDateChooser();
         txtCodigo = new javax.swing.JTextField();
         lDataCadastro = new javax.swing.JLabel();
-        txtCodigoBarra = new javax.swing.JFormattedTextField();
-        lCodigoBarra = new javax.swing.JLabel();
         chkLancamento = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -179,6 +174,7 @@ public class FrmCadastrarFilme extends javax.swing.JDialog {
         jspQuantidade.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
         jspValor.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 0.1d));
+        jspValor.setEditor(new javax.swing.JSpinner.NumberEditor(jspValor, "R$ ###,###.##"));
 
         BtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pontocristao/icones/BtnCancelar.png"))); // NOI18N
         BtnCancelar.setText("Cancelar");
@@ -217,8 +213,6 @@ public class FrmCadastrarFilme extends javax.swing.JDialog {
 
         lDataCadastro.setText("Data de Cadastro");
 
-        lCodigoBarra.setText("Código de Barras");
-
         chkLancamento.setText("Lançamento");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -233,12 +227,8 @@ public class FrmCadastrarFilme extends javax.swing.JDialog {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lCodigoProduto))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtCodigoBarra, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lCodigoBarra))
+                                        .addComponent(lCodigoProduto)
+                                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(18, 18, 18)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(lDataCadastro)
@@ -278,13 +268,10 @@ public class FrmCadastrarFilme extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lCodigoProduto)
-                    .addComponent(lCodigoBarra)
                     .addComponent(lDataCadastro))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtCodigoBarra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jcDataCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lNomeProduto)
@@ -394,7 +381,6 @@ public class FrmCadastrarFilme extends javax.swing.JDialog {
     private com.toedter.calendar.JDateChooser jcDataCadastro;
     private javax.swing.JSpinner jspQuantidade;
     private javax.swing.JSpinner jspValor;
-    private javax.swing.JLabel lCodigoBarra;
     private javax.swing.JLabel lCodigoProduto;
     private javax.swing.JLabel lDataCadastro;
     private javax.swing.JLabel lFornecedor;
@@ -403,7 +389,6 @@ public class FrmCadastrarFilme extends javax.swing.JDialog {
     private javax.swing.JLabel lTipoProduto;
     private javax.swing.JLabel lValorVenda;
     private javax.swing.JTextField txtCodigo;
-    private javax.swing.JFormattedTextField txtCodigoBarra;
     private javax.swing.JTextField txtNomeProduto;
     // End of variables declaration//GEN-END:variables
 }

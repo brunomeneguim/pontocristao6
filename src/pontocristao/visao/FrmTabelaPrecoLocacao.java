@@ -101,13 +101,16 @@ public class FrmTabelaPrecoLocacao extends javax.swing.JDialog {
         jLabel1.setText("Valor normal*");
 
         jspValorNormal.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 0.1d));
+        jspValorNormal.setEditor(new javax.swing.JSpinner.NumberEditor(jspValorNormal, "R$ ###,###.##"));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("Valor de lançamento*");
 
         jspValorLancamento.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 0.1d));
+        jspValorLancamento.setEditor(new javax.swing.JSpinner.NumberEditor(jspValorLancamento, "R$ ###,###.##"));
 
         jspValorMultaDiaria.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 0.1d));
+        jspValorMultaDiaria.setEditor(new javax.swing.JSpinner.NumberEditor(jspValorMultaDiaria, "R$ ###,###.##"));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel3.setText("Multa diária por atraso*");
