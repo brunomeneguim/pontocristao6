@@ -460,35 +460,42 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnSairActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        String relatorio = ".\\Relatorios\\RelatorioCliente.jasper";
-        String arquivo = ".\\Relatorios.\\RelatorioCliente.pdf";
+        FrmDataRelatorio frm = FrmDataRelatorio.Mostrar(this, "Relatório de clientes");
 
-        try {
-            Properties connectionProps = new Properties();
-            connectionProps.put("user", "root");
-            connectionProps.put("password", "root");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pontocristao", connectionProps);
+        if (frm.Confirmou) {
 
-            HashMap parametros = new HashMap();
-            
-            DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-            parametros.put("DATA_INICIO", "2016-01-29");
-            parametros.put("DATA_FIM", "2018-01-29");
+            String relatorio = ".\\Relatorios\\RelatorioCliente.jasper";
+            String arquivo = ".\\Relatorios.\\RelatorioCliente.pdf";
 
-            JasperPrint jp = JasperFillManager.fillReport(relatorio, parametros, conn);
+            try {
+                Properties connectionProps = new Properties();
+                connectionProps.put("user", "root");
+                connectionProps.put("password", "root");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pontocristao", connectionProps);
 
-            JRExporter exporter = new JRPdfExporter();
-            exporter.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, arquivo);
-            exporter.setParameter(JRExporterParameter.JASPER_PRINT, jp);
+                HashMap parametros = new HashMap();
 
-            exporter.exportReport();
+                DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                parametros.put("DATA_INICIO", df.format(frm.DataInicio));
+                parametros.put("DATA_FIM", df.format(frm.DataLimite));
 
-            File myFile = new File(arquivo);
-            Desktop.getDesktop().open(myFile);
+                JasperPrint jp = JasperFillManager.fillReport(relatorio, parametros, conn);
 
-        } catch (Exception ex) {
-            Utilidades.MostrarMensagemErro(ex);
+                JRExporter exporter = new JRPdfExporter();
+                exporter.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, arquivo);
+                exporter.setParameter(JRExporterParameter.JASPER_PRINT, jp);
+
+                exporter.exportReport();
+
+                File myFile = new File(arquivo);
+                Desktop.getDesktop().open(myFile);
+
+            } catch (Exception ex) {
+                Utilidades.MostrarMensagemErro(ex);
+            }
+
         }
+        
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem20ActionPerformed
